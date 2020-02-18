@@ -19,7 +19,7 @@ namespace JavaTools.Util
             CommonUtil.ScanFiles(folderPath, (currFile) =>
             {
                 //只要java文件，且内容必须有@Data字段的
-                if (Path.GetExtension(currFile).ToLower() != "java")
+                if (Path.GetExtension(currFile).ToLower() != ".java")
                 {
                     return false;
                 }
@@ -30,16 +30,22 @@ namespace JavaTools.Util
                     return false;
                 }
 
+                //处理掉文件内容中的注解：
+                var proccedingContent = Regex.Replace(fileContent, "@[^\n]*", "");
+
                 //带注释部分的情况下：$1：单行注释内容；$2类型；$3字段首字母；$4字段
-                MatchCollection matchFiledWithComment = Regex.Matches(fileContent, @"/\*\*[\n\s\*]+(.*)[*\s]?\s+\*/\s+private ([\w<>]+) (\w)(\w+);", RegexOptions.Multiline);
+                MatchCollection matchFiledWithComment = Regex.Matches(proccedingContent, @"/\*\*[\n\s\*]+(.*)[*\s]?\s+\*/\s+private ([\w<>]+) (\w)(\w+);", RegexOptions.Multiline);
+
 
                 //不带注释的情况下的匹配内容：
-                MatchCollection matchFiled = Regex.Matches(fileContent, @"private ([\w<>]+) (\w)(\w+);", RegexOptions.Multiline);
+                MatchCollection matchFiled = Regex.Matches(proccedingContent, @"private ([\w<>]+) (\w)(\w+);", RegexOptions.Multiline);
 
                 //两者不一致的部分，则视为无法处理（可能是多行注释，可能是没有注释，可能是字段加了注解）
                 if (matchFiled.Count > 0 && matchFiled.Count != matchFiledWithComment.Count)
                 {
-                    unableList.Add(currFile);
+                    //根本对不上的，或注释不规范的：
+                    unableList.Add(currFile + "\t" + matchFiledWithComment.Count + " but fileds:" + matchFiled.Count);
+                    
                 }
                 else
                 {

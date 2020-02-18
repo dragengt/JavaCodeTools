@@ -61,6 +61,8 @@ namespace JavaTools
 
             StringBuilder sb = new StringBuilder();
             processedList.ForEach((file) => sb.AppendLine(file));
+            sb.AppendLine("----------------------------------------");
+            sb.AppendLine("\n\nunable processed:");
             unableList.ForEach((file) => sb.AppendLine(file));
 
             ShowReport(sb);
