@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iNugetTool", "..\..\C#\iNugetTool\iNugetTool.csproj", "{319C6043-1E19-4954-BB21-66532B89DB6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaTools", "JavaTools\JavaTools.csproj", "{472D5E1C-46CF-40D7-93AC-9DA737FF950C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCommon", "AppCommon\AppCommon.csproj", "{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{319C6043-1E19-4954-BB21-66532B89DB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{319C6043-1E19-4954-BB21-66532B89DB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{319C6043-1E19-4954-BB21-66532B89DB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{319C6043-1E19-4954-BB21-66532B89DB6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{472D5E1C-46CF-40D7-93AC-9DA737FF950C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{472D5E1C-46CF-40D7-93AC-9DA737FF950C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{472D5E1C-46CF-40D7-93AC-9DA737FF950C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{472D5E1C-46CF-40D7-93AC-9DA737FF950C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

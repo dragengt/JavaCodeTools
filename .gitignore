@@ -1,0 +1,11 @@
+target/
+bin/
+obj/
+Release/
+*.user
+*.suo
+*.log
+*.nuspec
+*.nupkg
+packages/
+.vs/
