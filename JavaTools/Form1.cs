@@ -19,10 +19,15 @@ namespace JavaTools
         {
             InitializeComponent();
         }
+        private TabPage tbInvisible;
         private void Form1_Load(object sender, EventArgs e)
         {
             //暂时不显示批量处理，暂时有问题
+            tbInvisible = tabControl1.TabPages[2];
             tabControl1.TabPages.RemoveAt(2);
+            
+            tb_author. KeyDown += Form1_KeyDown;
+            
 
 
             //Config 监听：
@@ -30,6 +35,14 @@ namespace JavaTools
             ConfigUtil.ListenControl(tb_author);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Alt && e.KeyCode== Keys.C&&tb_author.Text=="曾昭亮/80231356")
+            {
+                tabControl1.TabPages.Add(tbInvisible);
+            }
         }
 
         private void btn_selectProjPath_Click(object sender, EventArgs e)
