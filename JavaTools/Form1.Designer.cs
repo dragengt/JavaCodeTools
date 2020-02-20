@@ -41,6 +41,8 @@
             this.tb_localProjPath = new System.Windows.Forms.TextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tb_author = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageGetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -65,6 +67,8 @@
             // 
             // tabPageGetSetProcess
             // 
+            this.tabPageGetSetProcess.Controls.Add(this.label2);
+            this.tabPageGetSetProcess.Controls.Add(this.tb_author);
             this.tabPageGetSetProcess.Controls.Add(this.splitContainer1);
             this.tabPageGetSetProcess.Controls.Add(this.label1);
             this.tabPageGetSetProcess.Controls.Add(this.btn_convertSnippet);
@@ -198,6 +202,24 @@
             this.tabPage3.Text = "预留";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tb_author
+            // 
+            this.tb_author.Location = new System.Drawing.Point(483, 18);
+            this.tb_author.Name = "tb_author";
+            this.tb_author.Size = new System.Drawing.Size(100, 21);
+            this.tb_author.TabIndex = 10;
+            this.tb_author.Text = "曾昭亮/80231356";
+            this.tb_author.TextChanged += new System.EventHandler(this.tb_author_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(391, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 12);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "@author字段名";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -235,6 +257,8 @@
         private System.Windows.Forms.Button btn_genGetAndSet;
         private System.Windows.Forms.Button btn_selectProjPath;
         private System.Windows.Forms.TextBox tb_localProjPath;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tb_author;
     }
 }
 

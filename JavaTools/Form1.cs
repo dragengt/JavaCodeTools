@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppCommon.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +22,12 @@ namespace JavaTools
         private void Form1_Load(object sender, EventArgs e)
         {
             //暂时不显示批量处理，暂时有问题
-            //TODO 整合代码
             tabControl1.TabPages.RemoveAt(2);
 
 
             //Config 监听：
-            AppCommon.Util.ConfigUtil.ListenControl(tb_localProjPath);
+            ConfigUtil.ListenControl(tb_localProjPath);
+            ConfigUtil.ListenControl(tb_author);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
         }
@@ -96,6 +97,11 @@ namespace JavaTools
             }
 
             rtb_tarCodeSnippet.Text = Util.JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text);
+        }
+
+        private void tb_author_TextChanged(object sender, EventArgs e)
+        {
+            Util.JavaGetSetterGenerator.g_author = tb_author.Text;
         }
     }
 }

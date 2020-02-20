@@ -11,6 +11,7 @@ namespace JavaTools.Util
 {
     class JavaGetSetterGenerator
     {
+        public static string g_author = "曾昭亮/80231356";
         public static void ProcessFolder(string folderPath, out List<string> processResultList, out List<string> unableResultList)
         {
             var processList = new List<string>();  //可处理、处理完成的
@@ -105,6 +106,7 @@ namespace JavaTools.Util
                     string fMethodName = currMatch.Groups[3].Value.ToUpper() + currMatch.Groups[4].Value; //大写字段名，作为方法名一部分
                     string appendGetterStartsWith = "get";                                          //getter方法应该用get还是is
                     string fparamName = currMatch.Groups[3].Value.ToLower() + currMatch.Groups[4].Value; //默认情况下，setter的参数名为字段名，此处特意转小写开头，避免有字段大写开头，导致setter方法反而新增技术债
+                    string author = g_author; 
                     if (fType == "boolean")  //特殊处理：对于boolean（非Boolean），getter方法是isXXX
                     {
                         appendGetterStartsWith = "is";
@@ -136,7 +138,7 @@ namespace JavaTools.Util
 	 * 获取：{1}
 	 * 
 	 * @return {3}
-	 * @author 曾昭亮/80231356
+	 * @author {6}
 	 * @createdate 2020年2月18日
 	 */
 	public {2} {0}{4}()
@@ -148,7 +150,7 @@ namespace JavaTools.Util
 	 * 设置：{1}
 	 * 
 	 * @param {3} {1}
-	 * @author 曾昭亮/80231356
+	 * @author {6}
 	 * @createdate 2020年2月18日
 	 */
 	public void set{4}({2} {5})
@@ -157,11 +159,14 @@ namespace JavaTools.Util
 	}}
 ",
                     appendGetterStartsWith,         //get的方法是应该用getXXX，还是isXXXX
-                    fComment,                               //{1}: 以此类推
-                    fType,
-                    fName,
-                    fMethodName,
-                    fparamName);
+                    fComment,                               //{1}: 注释部分
+                    fType,                                      //{2}：字段类型
+                    fName,                                      //{3} 字段名
+                    fMethodName,                          //{4}方法名（拼接在get/set后面）
+                    fparamName,                            //{5}set方法内的参数名
+                    author                                      //{6}作者
+                    );
+
                 }
 
                 //处理完成后，添加"}" 结束文件
@@ -271,6 +276,7 @@ namespace JavaTools.Util
                 string fMethodName = currMatch.Groups[3].Value.ToUpper() + currMatch.Groups[4].Value; //大写字段名，作为方法名一部分
                 string appendGetterStartsWith = "get";                                          //getter方法应该用get还是is
                 string fparamName = currMatch.Groups[3].Value.ToLower() + currMatch.Groups[4].Value; //默认情况下，setter的参数名为字段名，此处特意转小写开头，避免有字段大写开头，导致setter方法反而新增技术债
+                
                 if (fType == "boolean")  //特殊处理：对于boolean（非Boolean），getter方法是isXXX
                 {
                     appendGetterStartsWith = "is";
@@ -302,7 +308,7 @@ namespace JavaTools.Util
 	 * 获取：{1}
 	 * 
 	 * @return {3}
-	 * @author 曾昭亮/80231356
+	 * @author {6}
 	 * @createdate 2020年2月18日
 	 */
 	public {2} {0}{4}()
@@ -314,7 +320,7 @@ namespace JavaTools.Util
 	 * 设置：{1}
 	 * 
 	 * @param {3} {1}
-	 * @author 曾昭亮/80231356
+	 * @author {6}
 	 * @createdate 2020年2月18日
 	 */
 	public void set{4}({2} {5})
@@ -322,12 +328,14 @@ namespace JavaTools.Util
 		this.{3} = {5};
 	}}
 ",
-                appendGetterStartsWith,         //get的方法是应该用getXXX，还是isXXXX
-                fComment,                               //{1}: 以此类推
-                fType,
-                fName,
-                fMethodName,
-                fparamName);
+                    appendGetterStartsWith,         //get的方法是应该用getXXX，还是isXXXX
+                    fComment,                               //{1}: 注释部分
+                    fType,                                      //{2}：字段类型
+                    fName,                                      //{3} 字段名
+                    fMethodName,                          //{4}方法名（拼接在get/set后面）
+                    fparamName,                            //{5}set方法内的参数名
+                    g_author                                    //{6}作者
+                    );
             }
 
             //处理完成后，添加"}" 结束文件
