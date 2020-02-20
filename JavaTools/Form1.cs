@@ -20,14 +20,19 @@ namespace JavaTools
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //暂时不显示批量处理，暂时有问题
+            //TODO 整合代码
+            tabControl1.TabPages.RemoveAt(2);
+
+
+            //Config 监听：
             AppCommon.Util.ConfigUtil.ListenControl(tb_localProjPath);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
         }
 
         private void btn_selectProjPath_Click(object sender, EventArgs e)
-        {
-            //new FolderBrowserDialog().ShowDialog();
+        { 
             var dialog = new OpenFileDialog()
             {
                 Filter = "any|*",
@@ -82,5 +87,15 @@ namespace JavaTools
             processReportForm.Activate();
         }
 
+        private void btn_convertSnippet_Click(object sender, EventArgs e)
+        {
+            if( string.IsNullOrEmpty(rtb_srcCodeSnippet.Text))
+            {
+                MessageBox.Show("没啥代码可转换的。");
+                return;
+            }
+
+            rtb_tarCodeSnippet.Text = Util.JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text);
+        }
     }
 }
