@@ -118,7 +118,7 @@ namespace JavaToolsBiz.Util
                 || matchFiledWithComment.Count == 0)                                                                      //或者根本就匹配不到私有字段的
             {
                 //根本对不上的，或注释不规范的：
-                errorMsg.Add(currFile + "\t匹配到规范、带注释的private字段数" + matchFiledWithComment.Count + " 但实有字段数:" + matchFiled.Count);
+                errorMsg.Add(currFile + "\t匹配到规范、带注释的private字段数" + matchFiledWithComment.Count + " 但怀疑实有字段数:" + matchFiled.Count+" . 请确保没有现有的get/set方法，并且实体类是单纯的实体类");
                 return false;               //根本无法处理的
             }
             //新输出的文件内容：
