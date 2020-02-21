@@ -7,8 +7,8 @@
     <ProjectGuid>{472D5E1C-46CF-40D7-93AC-9DA737FF950C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>JavaTools</RootNamespace>
-    <AssemblyName>JavaTools</AssemblyName>
+    <RootNamespace>JavaToolsForm</RootNamespace>
+    <AssemblyName>JavaToolsForm</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -82,7 +82,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\JavaGetSetterGenerator.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +96,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="JavaTools_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -117,8 +117,11 @@
       <Project>{2d983d76-fdef-40a5-9353-cb8c3fc5903d}</Project>
       <Name>AppCommon</Name>
     </ProjectReference>
+    <ProjectReference Include="..\JavaToolsBiz\JavaToolsBiz.csproj">
+      <Project>{ef900af9-98da-421c-b873-0e57d2bc7209}</Project>
+      <Name>JavaToolsBiz</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

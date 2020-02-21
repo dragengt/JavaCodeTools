@@ -1,4 +1,4 @@
-﻿namespace JavaTools
+﻿namespace JavaToolsForm
 {
     partial class Form1
     {

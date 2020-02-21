@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace JavaTools.Util
+namespace JavaToolsBiz.Util
 {
-    class JavaGetSetterGenerator
+    public class JavaGetSetterGenerator
     {
         public static string g_author = "曾昭亮/80231356";
         public static void ProcessFolder(string folderPath, out List<string> processResultList, out List<string> unableResultList)
@@ -52,7 +52,7 @@ namespace JavaTools.Util
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        internal static string ConvertCodeWithGetSetter(string text)
+        public static string ConvertCodeWithGetSetter(string text)
         {
             List<string> errorRecorder = new List<string>();
             StringBuilder afterConvert;

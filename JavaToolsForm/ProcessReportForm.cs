@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JavaTools
+namespace JavaToolsForm
 {
     public partial class ProcessReportForm : Form
     {

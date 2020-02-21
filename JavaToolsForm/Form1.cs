@@ -9,8 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using JavaToolsBiz.Util;
 
-namespace JavaTools
+namespace JavaToolsForm
 {
     public partial class Form1 : Form
     {
@@ -76,7 +77,7 @@ namespace JavaTools
                 return;
             }
             List<string> processedList, unableList;
-            Util.JavaGetSetterGenerator.ProcessFolder(tb_localProjPath.Text,out processedList,out unableList);
+            JavaGetSetterGenerator.ProcessFolder(tb_localProjPath.Text,out processedList,out unableList);
 
             StringBuilder sb = new StringBuilder();
             processedList.ForEach((file) => sb.AppendLine(file));
@@ -109,12 +110,12 @@ namespace JavaTools
                 return;
             }
 
-            rtb_tarCodeSnippet.Text = Util.JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text);
+            rtb_tarCodeSnippet.Text = JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text);
         }
 
         private void tb_author_TextChanged(object sender, EventArgs e)
         {
-            Util.JavaGetSetterGenerator.g_author = tb_author.Text;
+            JavaGetSetterGenerator.g_author = tb_author.Text;
         }
     }
 }
