@@ -11,7 +11,6 @@ namespace JavaWebTools
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btn_generateCode_Click(object sender, EventArgs e)
@@ -21,6 +20,7 @@ namespace JavaWebTools
             {
                 return;
             }
+            JavaToolsBiz.Util.JavaGetSetterGenerator.g_author = tb_authorText.Text;
             tb_tarCode.Text = JavaToolsBiz.Util.JavaGetSetterGenerator.ConvertCodeWithGetSetter(srcCode);
         }
     }
