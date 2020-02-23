@@ -26,14 +26,12 @@ namespace JavaToolsForm
             //暂时不显示批量处理，暂时有问题
             tbInvisible = tabControl1.TabPages[2];
             tabControl1.TabPages.RemoveAt(2);
-            
             tb_author. KeyDown += Form1_KeyDown;
             
-
-
             //Config 监听：
             ConfigUtil.ListenControl(tb_localProjPath);
             ConfigUtil.ListenControl(tb_author);
+            ConfigUtil.ListenControl(tb_ctorFolder);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
         }
@@ -47,7 +45,12 @@ namespace JavaToolsForm
         }
 
         private void btn_selectProjPath_Click(object sender, EventArgs e)
-        { 
+        {
+            tb_localProjPath.Text= SelectFolder();
+        }
+
+        private string SelectFolder()
+        {
             var dialog = new OpenFileDialog()
             {
                 Filter = "any|*",
@@ -61,11 +64,12 @@ namespace JavaToolsForm
                 var selectedFile = dialog.FileName;
                 string selectedFileName = Path.GetFileNameWithoutExtension(selectedFile);
                 string selectedPath = Path.GetDirectoryName(selectedFile);
-                 
+
 
                 //--使用选择的项目路径
-                tb_localProjPath.Text = selectedPath;
+                return selectedPath;
             }
+            return string.Empty;
         }
 
         private void btn_genGetAndSet_Click(object sender, EventArgs e)
@@ -87,7 +91,7 @@ namespace JavaToolsForm
 
             ShowReport(sb);
         }
-
+         
 
         //显示处理结果
         private void ShowReport(StringBuilder reportText)
@@ -116,6 +120,31 @@ namespace JavaToolsForm
         private void tb_author_TextChanged(object sender, EventArgs e)
         {
             JavaGetSetterGenerator.g_author = tb_author.Text;
+        }
+
+        private void btn_batchGenCtor_Click(object sender, EventArgs e)
+        {
+            var scanPath = tb_localProjPath.Text;
+            if (string.IsNullOrEmpty(scanPath))
+            {
+                MessageBox.Show("本地路径为空");
+                return;
+            }
+            List<string> processedList, unableList;
+            JavaConstructorFixer.ProcessFolder(tb_ctorFolder.Text, out processedList, out unableList);
+
+            StringBuilder sb = new StringBuilder();
+            processedList.ForEach((file) => sb.AppendLine(file));
+            sb.AppendLine("----------------------------------------");
+            sb.AppendLine("\n\nunable processed:");
+            unableList.ForEach((file) => sb.AppendLine(file));
+
+            ShowReport(sb);
+        }
+
+        private void btn_selectCtorFolder_Click(object sender, EventArgs e)
+        {
+            tb_ctorFolder.Text = SelectFolder();
         }
     }
 }

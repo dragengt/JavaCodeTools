@@ -30,25 +30,29 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGetSetProcess = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tb_author = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.rtb_srcCodeSnippet = new System.Windows.Forms.RichTextBox();
             this.rtb_tarCodeSnippet = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_convertSnippet = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_genGetAndSet = new System.Windows.Forms.Button();
             this.btn_selectProjPath = new System.Windows.Forms.Button();
             this.tb_localProjPath = new System.Windows.Forms.TextBox();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tb_author = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btn_batchGenCtor = new System.Windows.Forms.Button();
+            this.btn_selectCtorFolder = new System.Windows.Forms.Button();
+            this.tb_ctorFolder = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPageGetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,6 +83,24 @@
             this.tabPageGetSetProcess.TabIndex = 0;
             this.tabPageGetSetProcess.Text = "Getter/Setter处理";
             this.tabPageGetSetProcess.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(391, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 12);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "@author字段名";
+            // 
+            // tb_author
+            // 
+            this.tb_author.Location = new System.Drawing.Point(483, 18);
+            this.tb_author.Name = "tb_author";
+            this.tb_author.Size = new System.Drawing.Size(100, 21);
+            this.tb_author.TabIndex = 10;
+            this.tb_author.Text = "曾昭亮/80231356";
+            this.tb_author.TextChanged += new System.EventHandler(this.tb_author_TextChanged);
             // 
             // splitContainer1
             // 
@@ -138,6 +160,18 @@
             this.btn_convertSnippet.UseVisualStyleBackColor = true;
             this.btn_convertSnippet.Click += new System.EventHandler(this.btn_convertSnippet_Click);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btn_batchGenCtor);
+            this.tabPage1.Controls.Add(this.btn_selectCtorFolder);
+            this.tabPage1.Controls.Add(this.tb_ctorFolder);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(591, 545);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "预留";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btn_genGetAndSet);
@@ -184,15 +218,6 @@
             this.tb_localProjPath.Size = new System.Drawing.Size(488, 23);
             this.tb_localProjPath.TabIndex = 6;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(591, 545);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "预留";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -202,23 +227,38 @@
             this.tabPage3.Text = "预留";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tb_author
+            // btn_batchGenCtor
             // 
-            this.tb_author.Location = new System.Drawing.Point(483, 18);
-            this.tb_author.Name = "tb_author";
-            this.tb_author.Size = new System.Drawing.Size(100, 21);
-            this.tb_author.TabIndex = 10;
-            this.tb_author.Text = "曾昭亮/80231356";
-            this.tb_author.TextChanged += new System.EventHandler(this.tb_author_TextChanged);
+            this.btn_batchGenCtor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_batchGenCtor.Location = new System.Drawing.Point(6, 51);
+            this.btn_batchGenCtor.Name = "btn_batchGenCtor";
+            this.btn_batchGenCtor.Size = new System.Drawing.Size(577, 54);
+            this.btn_batchGenCtor.TabIndex = 11;
+            this.btn_batchGenCtor.Text = "批量生成构造方法";
+            this.btn_batchGenCtor.UseVisualStyleBackColor = true;
+            this.btn_batchGenCtor.Click += new System.EventHandler(this.btn_batchGenCtor_Click);
             // 
-            // label2
+            // btn_selectCtorFolder
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "@author字段名";
+            this.btn_selectCtorFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_selectCtorFolder.Location = new System.Drawing.Point(502, 23);
+            this.btn_selectCtorFolder.Name = "btn_selectCtorFolder";
+            this.btn_selectCtorFolder.Size = new System.Drawing.Size(81, 23);
+            this.btn_selectCtorFolder.TabIndex = 10;
+            this.btn_selectCtorFolder.Text = "选择文件夹";
+            this.btn_selectCtorFolder.UseVisualStyleBackColor = true;
+            this.btn_selectCtorFolder.Click += new System.EventHandler(this.btn_selectCtorFolder_Click);
+            // 
+            // tb_ctorFolder
+            // 
+            this.tb_ctorFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_ctorFolder.Location = new System.Drawing.Point(8, 23);
+            this.tb_ctorFolder.Multiline = true;
+            this.tb_ctorFolder.Name = "tb_ctorFolder";
+            this.tb_ctorFolder.Size = new System.Drawing.Size(488, 23);
+            this.tb_ctorFolder.TabIndex = 9;
             // 
             // Form1
             // 
@@ -236,6 +276,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -259,6 +301,9 @@
         private System.Windows.Forms.TextBox tb_localProjPath;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_author;
+        private System.Windows.Forms.Button btn_batchGenCtor;
+        private System.Windows.Forms.Button btn_selectCtorFolder;
+        private System.Windows.Forms.TextBox tb_ctorFolder;
     }
 }
 
