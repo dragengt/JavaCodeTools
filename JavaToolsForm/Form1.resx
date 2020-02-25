@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>1、注释处理：对//xx，以英文符号和;结尾的，视为注释，该行将整行删除
+注意目前仅识别; 结尾的代码，因为看sonar的扫描规则好像也是以此为准，并且Sonar会误报以 ; 结尾 的内容，所以暂时处理这样的代码。但是删除并不完全，慎用；
+
+2、对于@Autowired但是没有private修饰符的，会添加修饰符，但是后续你需要记得构造方法处理；
+3、泛型类型new时无需在&lt;&gt;指定类型，此规则自动修正
+4、synchronized自动调整到static修饰符后面
+</value>
+  </data>
 </root>

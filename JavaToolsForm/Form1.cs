@@ -45,7 +45,7 @@ namespace JavaToolsForm
             }
         }
 
-
+        //生成get/set方法
         private void btn_genGetAndSet_Click(object sender, EventArgs e)
         {
             var scanPath = tb_getsetProjPath.Text;
@@ -55,31 +55,45 @@ namespace JavaToolsForm
                 return;
             }
             List<string> processedList, unableList;
-            JavaGetSetterGenerator.ProcessFolder(tb_getsetProjPath.Text,out processedList,out unableList);
+            JavaGetSetterGenerator.ProcessFolder(scanPath, out processedList,out unableList);
 
-            StringBuilder sb = new StringBuilder();
-            processedList.ForEach((file) => sb.AppendLine(file));
-            sb.AppendLine("----------------------------------------");
-            sb.AppendLine("\n\nunable processed:");
-            unableList.ForEach((file) => sb.AppendLine(file));
-
-            ShowReport(sb);
+            ShowReport(processedList, unableList);
         }
-         
 
-        //显示处理结果
-        private void ShowReport(StringBuilder reportText)
+
+        //生成构造方法
+        private void btn_batchGenCtor_Click(object sender, EventArgs e)
         {
-            if (processReportForm == null || processReportForm.Disposing || processReportForm.IsDisposed)
+            var scanPath = tb_ctorFolder.Text;
+            if (string.IsNullOrEmpty(scanPath))
             {
-                processReportForm = new ProcessReportForm();
-                processReportForm.Show();
+                MessageBox.Show("本地路径为空");
+                return;
             }
+            List<string> processedList, unableList;
+            JavaConstructorFixer.SetSkipAutowired(cb_skipAutowired.Checked);
+            JavaConstructorFixer.ProcessFolder(scanPath, out processedList, out unableList);
 
-            processReportForm.SetReportText(reportText);
-            processReportForm.Activate();
+            ShowReport(processedList, unableList);
         }
 
+        //强制转换规范
+        private void btn_processForceFix_Click(object sender, EventArgs e)
+        { 
+            var scanPath = tb_forceFixProj.Text;
+            if (string.IsNullOrEmpty(scanPath))
+            {
+                MessageBox.Show("本地路径为空");
+                return;
+            }
+            
+            List<string> processedList, unableList;
+            JavaCodeForceFixer.ProcessFolder(scanPath, out processedList,out unableList);
+
+            ShowReport(processedList, unableList);
+        }
+       
+        //转换get/set 代码段
         private void btn_convertSnippet_Click(object sender, EventArgs e)
         {
             if( string.IsNullOrEmpty(rtb_srcCodeSnippet.Text))
@@ -94,27 +108,6 @@ namespace JavaToolsForm
         private void tb_author_TextChanged(object sender, EventArgs e)
         {
             JavaGetSetterGenerator.g_author = tb_author.Text;
-        }
-
-        private void btn_batchGenCtor_Click(object sender, EventArgs e)
-        {
-            var scanPath = tb_ctorFolder.Text;
-            if (string.IsNullOrEmpty(scanPath))
-            {
-                MessageBox.Show("本地路径为空");
-                return;
-            }
-            List<string> processedList, unableList;
-            JavaConstructorFixer.SetSkipAutowired(cb_skipAutowired.Checked);
-            JavaConstructorFixer.ProcessFolder(tb_ctorFolder.Text, out processedList, out unableList);
-
-            StringBuilder sb = new StringBuilder();
-            processedList.ForEach((file) => sb.AppendLine(file));
-            sb.AppendLine("----------------------------------------");
-            sb.AppendLine("\n\nunable processed:");
-            unableList.ForEach((file) => sb.AppendLine(file));
-
-            ShowReport(sb);
         }
 
         private void btn_selectCtorFolder_Click(object sender, EventArgs e)
@@ -153,6 +146,31 @@ namespace JavaToolsForm
                 return selectedPath;
             }
             return string.Empty;
+        }
+
+        //显示处理结果
+
+        private void ShowReport(List<string> processedList, List<string> unableList)
+        {
+            StringBuilder sb = new StringBuilder();
+            processedList.ForEach((file) => sb.AppendLine(file));
+            sb.AppendLine("----------------------------------------");
+            sb.AppendLine("\n\nunable processed:");
+            unableList.ForEach((file) => sb.AppendLine(file));
+
+            ShowReport(sb);
+        }
+
+        private void ShowReport(StringBuilder reportText)
+        {
+            if (processReportForm == null || processReportForm.Disposing || processReportForm.IsDisposed)
+            {
+                processReportForm = new ProcessReportForm();
+                processReportForm.Show();
+            }
+
+            processReportForm.SetReportText(reportText);
+            processReportForm.Activate();
         }
     }
 }

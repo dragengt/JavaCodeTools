@@ -25,26 +25,12 @@ namespace JavaToolsBiz.Util
         /// <param name="processResultList"></param>
         /// <param name="unableResultList"></param>
         public static void ProcessFolder(string folderPath, out List<string> processResultList, out List<string> unableResultList)
-        {
-            var errorList = new List<string>();   //不可处理的
-            unableResultList = new List<string>();
-            if (!Directory.Exists(folderPath))
-            {
-                processResultList = new List<string>();
-                unableResultList.Add("目录不存在");
-                return;
-            }
+        { 
+            unableResultList = new List<string>(); 
 
             //对每个文件进行操作：（返回true则表示文件被纳入成功处理列表）
-            processResultList = CommonUtil.ScanFiles(folderPath, (currFile) =>
-            {
-                //只要java文件，且内容必须有@Data字段的
-                if (Path.GetExtension(currFile).ToLower() != ".java")
-                {
-                    return false;           //非JAVA文件
-                }
-                var fileContent = File.ReadAllText(currFile);
-
+            processResultList = CommonUtil.ForeachJavaFiles(folderPath, unableResultList,(currFile, fileContent) =>
+            { 
                 //文件是否符合class& 存在字段 & 不存在构造方法
                 bool gotMatched = false;
                 fileContent = Regex.Replace(fileContent, @"class (\w+)\s*[^\{]*\{", (matched) =>

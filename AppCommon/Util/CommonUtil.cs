@@ -177,6 +177,43 @@ namespace AppCommon.Util
             return resultList;
         }
 
+        /// <summary>
+        /// 扫描路径下所有Java文件，DFS搜索
+        /// </summary>
+        /// <param name="folderPath">路径</param>
+        /// <param name="funcEachFileAndContent">每个java文件, 文件内容，如果方法处理返回true，则说明文件达到预期，会加入结果列表中</param>
+        /// <param name="errorListAppender">错误信息</param>
+        /// <returns></returns>
+        public static List<string> ForeachJavaFiles(string folderPath, List<string> errorListAppender, Func<String,String,bool> funcEachFileAndContent)
+        {
+            List<string> processResultList = null;
+            if(errorListAppender==null)
+            {
+                throw new ArgumentNullException("errorList不能为null，需要用于追加错误信息");
+            }
+
+            if (!Directory.Exists(folderPath))
+            {
+                processResultList = new List<string>();
+                errorListAppender.Add("目录不存在");
+                return processResultList;
+            }
+
+
+            //对每个文件进行操作：（返回true则表示文件被纳入成功处理列表）
+            processResultList = CommonUtil.ScanFiles(folderPath, (currFile) =>
+            {
+                //只要java文件，且内容必须有@Data字段的
+                if (Path.GetExtension(currFile).ToLower() != ".java")
+                {
+                    return false;           //非JAVA文件
+                }
+                var fileContent = File.ReadAllText(currFile);
+                return funcEachFileAndContent(currFile, fileContent);
+            });
+
+            return processResultList;
+        }
     }
 
 }

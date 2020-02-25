@@ -16,23 +16,9 @@ namespace JavaToolsBiz.Util
         { 
             var errorList = new List<string>();   //不可处理的
              
-            if(!Directory.Exists(folderPath))
-            {
-                processResultList = new List<string>();
-                unableResultList = new List<string>() { "目录不存在" };
-                return;
-            }
-
             //对每个文件进行操作：（返回true则表示文件被纳入成功处理列表）
-            processResultList = CommonUtil.ScanFiles(folderPath, (currFile) =>
-            {
-                //只要java文件，且内容必须有@Data字段的
-                if (Path.GetExtension(currFile).ToLower() != ".java")
-                {
-                    return false;           //非JAVA文件
-                }
-                var fileContent = File.ReadAllText(currFile);
-
+            processResultList = CommonUtil.ForeachJavaFiles(folderPath, errorList,(currFile,fileContent) =>
+            {  
                 if (!fileContent.Contains("@Data"))
                 {
                     return false;           //非@Data的，自己实现了getter/setter的，跳过该文件

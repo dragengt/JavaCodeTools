@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGetSetProcess = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -294,6 +295,7 @@
             this.btn_processForceFix.TabIndex = 11;
             this.btn_processForceFix.Text = "强制规范转换";
             this.btn_processForceFix.UseVisualStyleBackColor = true;
+            this.btn_processForceFix.Click += new System.EventHandler(this.btn_processForceFix_Click);
             // 
             // btn_selectForceFixProj
             // 
@@ -325,8 +327,7 @@
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(576, 138);
             this.richTextBox1.TabIndex = 12;
-            this.richTextBox1.Text = "1、注释处理：对//xx，以英文符号和;结尾的，视为注释，该行将整行删除\n2、对于@Autowired但是没有private修饰符的，予以提示，并需要记得构造方法" +
-    "处理；\n";
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // richTextBox2
             // 
