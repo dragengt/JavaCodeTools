@@ -29,9 +29,10 @@ namespace JavaToolsForm
             tb_author. KeyDown += Form1_KeyDown;
             
             //Config 监听：
-            ConfigUtil.ListenControl(tb_localProjPath);
+            ConfigUtil.ListenControl(tb_getsetProjPath);
             ConfigUtil.ListenControl(tb_author);
             ConfigUtil.ListenControl(tb_ctorFolder);
+            ConfigUtil.ListenControl(tb_forceFixProj);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
         }
@@ -44,44 +45,17 @@ namespace JavaToolsForm
             }
         }
 
-        private void btn_selectProjPath_Click(object sender, EventArgs e)
-        {
-            tb_localProjPath.Text= SelectFolder();
-        }
-
-        private string SelectFolder()
-        {
-            var dialog = new OpenFileDialog()
-            {
-                Filter = "any|*",
-                CheckPathExists = false,
-                ValidateNames = false,
-            };
-            var pickResult = dialog.ShowDialog();
-            if (pickResult == DialogResult.OK)
-            {
-                //获得选择的文件信息
-                var selectedFile = dialog.FileName;
-                string selectedFileName = Path.GetFileNameWithoutExtension(selectedFile);
-                string selectedPath = Path.GetDirectoryName(selectedFile);
-
-
-                //--使用选择的项目路径
-                return selectedPath;
-            }
-            return string.Empty;
-        }
 
         private void btn_genGetAndSet_Click(object sender, EventArgs e)
         {
-            var scanPath = tb_localProjPath.Text;
+            var scanPath = tb_getsetProjPath.Text;
             if (string.IsNullOrEmpty(scanPath))
             {
                 MessageBox.Show("本地路径为空");
                 return;
             }
             List<string> processedList, unableList;
-            JavaGetSetterGenerator.ProcessFolder(tb_localProjPath.Text,out processedList,out unableList);
+            JavaGetSetterGenerator.ProcessFolder(tb_getsetProjPath.Text,out processedList,out unableList);
 
             StringBuilder sb = new StringBuilder();
             processedList.ForEach((file) => sb.AppendLine(file));
@@ -124,13 +98,14 @@ namespace JavaToolsForm
 
         private void btn_batchGenCtor_Click(object sender, EventArgs e)
         {
-            var scanPath = tb_localProjPath.Text;
+            var scanPath = tb_ctorFolder.Text;
             if (string.IsNullOrEmpty(scanPath))
             {
                 MessageBox.Show("本地路径为空");
                 return;
             }
             List<string> processedList, unableList;
+            JavaConstructorFixer.SetSkipAutowired(cb_skipAutowired.Checked);
             JavaConstructorFixer.ProcessFolder(tb_ctorFolder.Text, out processedList, out unableList);
 
             StringBuilder sb = new StringBuilder();
@@ -145,6 +120,39 @@ namespace JavaToolsForm
         private void btn_selectCtorFolder_Click(object sender, EventArgs e)
         {
             tb_ctorFolder.Text = SelectFolder();
+        }
+
+        private void btn_selectForceFixProj_Click(object sender, EventArgs e)
+        {
+            tb_forceFixProj.Text = SelectFolder();
+        }
+         
+        private void btn_selectProjPath_Click(object sender, EventArgs e)
+        {
+            tb_getsetProjPath.Text = SelectFolder();
+        }
+
+        private string SelectFolder()
+        {
+            var dialog = new OpenFileDialog()
+            {
+                Filter = "any|*",
+                CheckPathExists = false,
+                ValidateNames = false,
+            };
+            var pickResult = dialog.ShowDialog();
+            if (pickResult == DialogResult.OK)
+            {
+                //获得选择的文件信息
+                var selectedFile = dialog.FileName;
+                string selectedFileName = Path.GetFileNameWithoutExtension(selectedFile);
+                string selectedPath = Path.GetDirectoryName(selectedFile);
+
+
+                //--使用选择的项目路径
+                return selectedPath;
+            }
+            return string.Empty;
         }
     }
 }

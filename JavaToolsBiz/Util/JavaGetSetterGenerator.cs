@@ -16,6 +16,13 @@ namespace JavaToolsBiz.Util
         { 
             var errorList = new List<string>();   //不可处理的
              
+            if(!Directory.Exists(folderPath))
+            {
+                processResultList = new List<string>();
+                unableResultList = new List<string>() { "目录不存在" };
+                return;
+            }
+
             //对每个文件进行操作：（返回true则表示文件被纳入成功处理列表）
             processResultList = CommonUtil.ScanFiles(folderPath, (currFile) =>
             {
@@ -103,7 +110,7 @@ namespace JavaToolsBiz.Util
             MatchCollection matchFiledWithComment = Regex.Matches(proccedingContent, @"/\*\*[\n\s\*]+(.*)[*\s]*\s+\*/\s+private ([\w<, >]+) (\w)(\w+)\s*;", RegexOptions.Multiline);
 
             //不带跨行注释的字段的情况下的匹配字段内容：
-            MatchCollection matchFiled = Regex.Matches(proccedingContent, @"([\w<,>]+) (\w)(\w+);", RegexOptions.Multiline);
+            MatchCollection matchFiled = Regex.Matches(proccedingContent, @"([\w<,>]+) (\w)(\w+)\s*;", RegexOptions.Multiline);
 
             //检查字段如果还是带初始化值的，则抛个错误 
             MatchCollection privateFiledsWithInit = Regex.Matches(proccedingContent, @"private\s*([\w<,>]+) (\w)(\w+)\s*=.*", RegexOptions.Multiline);
@@ -161,12 +168,12 @@ namespace JavaToolsBiz.Util
                 //字段名与方法名一样（即：开头大写），或者含有下划线，则加入警告列表
                 if (fName == fMethodName)
                 {
-                    warningBuilder.Append("字段：" + fName + " 开头为大写，不符合规范；");
+                    warningBuilder.Append("\t字段：" + fName + " 开头为大写，不符合规范；");
 
                 }
                 if (fName.Contains("_"))
                 {
-                    warningBuilder.Append("字段：" + fName + " 含有下划线，不符合规范；");
+                    warningBuilder.Append( "\t字段：" + fName + " 含有下划线，不符合规范；");
                     //将参数按规范处理：
                     fparamName = Regex.Replace(fparamName, "(\\w)_(\\w)", (matched2) => { return matched2.Groups[1].Value + matched2.Groups[2].Value.ToUpper(); }); //去掉下划线作为参数名
                 }
@@ -215,7 +222,7 @@ namespace JavaToolsBiz.Util
             //处理完成后的警告
             if (warningBuilder.Length > 0)
             {
-                errorMsg.Add("!!!!WARING!!!!" + warningBuilder.ToString());
+                errorMsg.Add(currFile+"!!!!WARING!!!!:\n" + warningBuilder.ToString());
             }
 
             fileContentStringBuilder = codeBuilder;
