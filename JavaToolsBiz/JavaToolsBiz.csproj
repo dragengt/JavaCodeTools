@@ -48,9 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\JavaCode2CSharpGenerator.cs" />
     <Compile Include="Util\JavaCodeForceFixer.cs" />
     <Compile Include="Util\JavaConstructorFixer.cs" />
     <Compile Include="Util\JavaGetSetterGenerator.cs" />
+    <Compile Include="Util\JavaUnitTestGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppCommon\AppCommon.csproj">

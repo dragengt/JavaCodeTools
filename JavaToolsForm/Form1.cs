@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using JavaToolsBiz.Util;
+using System.Text.RegularExpressions;
 
 namespace JavaToolsForm
 {
@@ -33,6 +34,7 @@ namespace JavaToolsForm
             ConfigUtil.ListenControl(tb_author);
             ConfigUtil.ListenControl(tb_ctorFolder);
             ConfigUtil.ListenControl(tb_forceFixProj);
+            ConfigUtil.ListenControl(tb_unitTestAuthor);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
         }
@@ -54,6 +56,7 @@ namespace JavaToolsForm
                 MessageBox.Show("本地路径为空");
                 return;
             }
+            
             List<string> processedList, unableList;
             JavaGetSetterGenerator.ProcessFolder(scanPath, out processedList,out unableList);
 
@@ -105,6 +108,53 @@ namespace JavaToolsForm
             rtb_tarCodeSnippet.Text = JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text);
         }
 
+        //Java代码转C#处理
+        private void btn_j2cConvert_Click(object sender, EventArgs e)
+        {
+            string src = rtb_j2cSrc.Text;
+            if (string.IsNullOrEmpty(src.Trim()))
+            {
+                MessageBox.Show("没啥代码可转换的。");
+                return;
+            }
+
+            rtb_j2cTar.Text = JavaCode2CSharpGenerator.ConvertJava2CSharp(src);
+        }
+
+        //Java单元测试代码生成
+        private void rtb_unitTestGen_Click(object sender, EventArgs e)
+        {
+
+            string src = rtb_unitTestSrcCode.Text;
+            if (string.IsNullOrEmpty(src.Trim()))
+            {
+                MessageBox.Show("没啥代码可转换的。");
+                return;
+            }
+            JavaUnitTestGenerator.g_authorInfo = tb_unitTestAuthor.Text;
+            rtb_unitTestTarCode.Text = JavaUnitTestGenerator.ProcessCode(src).ToString();
+        }
+
+        //临时：
+        private void btn_j2cGenCodeFile_Click(object sender, EventArgs e)
+        {
+            var wantedFiles = rtb_j2cSrc.Text.Split('\n');
+            AppCommon.Util.CommonUtil.ScanFiles("D:/安全桌面专用目录/Document文档/客户评级（201806）/201912人行征信对接预研/entity", (filename) =>
+            {
+             
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
+                    if (wantedFiles.Contains(fileNameWithoutExtension))
+                    {
+                        File.Copy(filename, "D:/安全桌面专用目录/Document文档/客户评级（201806）/201912人行征信对接预研/entity/picked/" + fileNameWithoutExtension + ".java");
+                        return true;
+                    }
+                    return false;
+
+             
+            });
+
+        }
+
         private void tb_author_TextChanged(object sender, EventArgs e)
         {
             JavaGetSetterGenerator.g_author = tb_author.Text;
@@ -148,8 +198,32 @@ namespace JavaToolsForm
             return string.Empty;
         }
 
-        //显示处理结果
+        private void GenFileTemp()
+        {
 
+            string src = rtb_j2cSrc.Text;
+            if (string.IsNullOrEmpty(src.Trim()))
+            {
+                MessageBox.Show("没啥代码可转换的。");
+                return;
+            }
+
+            string afterFile = JavaCode2CSharpGenerator.ConvertJava2CSharp(src);
+            string className = Regex.Match(afterFile, @"class (\w+)").Groups[1].Value;
+            afterFile = Regex.Replace(afterFile, @"^", "	", RegexOptions.Multiline);//对类加个缩进
+            //afterFile = Regex.Replace(afterFile, @"	", "    ", RegexOptions.Multiline);//缩进换空格
+            string fileContent = string.Format(@"
+using Newtonsoft.Json; 
+
+namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
+{{
+{0}
+}}", afterFile);
+            File.WriteAllText("F:/RTC/RatingPure/LU18_Rating/LU18_批发客户评级系统/Rating/DotNetSln/RatingCommonService/RatingCommonService/Model/RHZXV2/" + className + ".cs", fileContent);
+            rtb_j2cTar.Text = fileContent;
+        }
+
+        //显示处理结果
         private void ShowReport(List<string> processedList, List<string> unableList)
         {
             StringBuilder sb = new StringBuilder();
@@ -172,5 +246,6 @@ namespace JavaToolsForm
             processReportForm.SetReportText(reportText);
             processReportForm.Activate();
         }
+
     }
 }

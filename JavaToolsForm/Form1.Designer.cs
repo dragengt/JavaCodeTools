@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPageGetSetProcess = new System.Windows.Forms.TabPage();
+            this.tp_GetSetProcess = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_author = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -38,38 +38,66 @@
             this.rtb_tarCodeSnippet = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_convertSnippet = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tp_getsetBatch = new System.Windows.Forms.TabPage();
+            this.btn_genGetAndSet = new System.Windows.Forms.Button();
+            this.btn_selectGetSetProjPath = new System.Windows.Forms.Button();
+            this.tb_getsetProjPath = new System.Windows.Forms.TextBox();
+            this.tp_ctorBatch = new System.Windows.Forms.TabPage();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.cb_skipAutowired = new System.Windows.Forms.CheckBox();
             this.btn_batchGenCtor = new System.Windows.Forms.Button();
             this.btn_selectCtorFolder = new System.Windows.Forms.Button();
             this.tb_ctorFolder = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btn_genGetAndSet = new System.Windows.Forms.Button();
-            this.btn_selectGetSetProjPath = new System.Windows.Forms.Button();
-            this.tb_getsetProjPath = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tp_codeFixBatch = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btn_processForceFix = new System.Windows.Forms.Button();
             this.btn_selectForceFixProj = new System.Windows.Forms.Button();
             this.tb_forceFixProj = new System.Windows.Forms.TextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.tp_java2Cs = new System.Windows.Forms.TabPage();
+            this.btn_j2cGenCodeFile = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_j2cConvert = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.rtb_j2cSrc = new System.Windows.Forms.RichTextBox();
+            this.rtb_j2cTar = new System.Windows.Forms.RichTextBox();
+            this.tp_unitTestGenerator = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_unitTestAuthor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.rtb_unitTestSrcCode = new System.Windows.Forms.RichTextBox();
+            this.rtb_unitTestTarCode = new System.Windows.Forms.RichTextBox();
+            this.rtb_unitTestGen = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPageGetSetProcess.SuspendLayout();
+            this.tp_GetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tp_getsetBatch.SuspendLayout();
+            this.tp_ctorBatch.SuspendLayout();
+            this.tp_codeFixBatch.SuspendLayout();
+            this.tp_java2Cs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            this.tp_unitTestGenerator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPageGetSetProcess);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tp_GetSetProcess);
+            this.tabControl1.Controls.Add(this.tp_getsetBatch);
+            this.tabControl1.Controls.Add(this.tp_ctorBatch);
+            this.tabControl1.Controls.Add(this.tp_codeFixBatch);
+            this.tabControl1.Controls.Add(this.tp_java2Cs);
+            this.tabControl1.Controls.Add(this.tp_unitTestGenerator);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -77,23 +105,24 @@
             this.tabControl1.Size = new System.Drawing.Size(599, 571);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPageGetSetProcess
+            // tp_GetSetProcess
             // 
-            this.tabPageGetSetProcess.Controls.Add(this.label2);
-            this.tabPageGetSetProcess.Controls.Add(this.tb_author);
-            this.tabPageGetSetProcess.Controls.Add(this.splitContainer1);
-            this.tabPageGetSetProcess.Controls.Add(this.label1);
-            this.tabPageGetSetProcess.Controls.Add(this.btn_convertSnippet);
-            this.tabPageGetSetProcess.Location = new System.Drawing.Point(4, 22);
-            this.tabPageGetSetProcess.Name = "tabPageGetSetProcess";
-            this.tabPageGetSetProcess.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGetSetProcess.Size = new System.Drawing.Size(591, 545);
-            this.tabPageGetSetProcess.TabIndex = 0;
-            this.tabPageGetSetProcess.Text = "Getter/Setter处理";
-            this.tabPageGetSetProcess.UseVisualStyleBackColor = true;
+            this.tp_GetSetProcess.Controls.Add(this.label2);
+            this.tp_GetSetProcess.Controls.Add(this.tb_author);
+            this.tp_GetSetProcess.Controls.Add(this.splitContainer1);
+            this.tp_GetSetProcess.Controls.Add(this.label1);
+            this.tp_GetSetProcess.Controls.Add(this.btn_convertSnippet);
+            this.tp_GetSetProcess.Location = new System.Drawing.Point(4, 22);
+            this.tp_GetSetProcess.Name = "tp_GetSetProcess";
+            this.tp_GetSetProcess.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_GetSetProcess.Size = new System.Drawing.Size(591, 545);
+            this.tp_GetSetProcess.TabIndex = 0;
+            this.tp_GetSetProcess.Text = "Getter/Setter处理";
+            this.tp_GetSetProcess.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(391, 21);
             this.label2.Name = "label2";
@@ -103,6 +132,7 @@
             // 
             // tb_author
             // 
+            this.tb_author.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_author.Location = new System.Drawing.Point(483, 18);
             this.tb_author.Name = "tb_author";
             this.tb_author.Size = new System.Drawing.Size(100, 21);
@@ -168,19 +198,76 @@
             this.btn_convertSnippet.UseVisualStyleBackColor = true;
             this.btn_convertSnippet.Click += new System.EventHandler(this.btn_convertSnippet_Click);
             // 
-            // tabPage1
+            // tp_getsetBatch
             // 
-            this.tabPage1.Controls.Add(this.richTextBox2);
-            this.tabPage1.Controls.Add(this.cb_skipAutowired);
-            this.tabPage1.Controls.Add(this.btn_batchGenCtor);
-            this.tabPage1.Controls.Add(this.btn_selectCtorFolder);
-            this.tabPage1.Controls.Add(this.tb_ctorFolder);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(591, 545);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "构造方法处理";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tp_getsetBatch.Controls.Add(this.btn_genGetAndSet);
+            this.tp_getsetBatch.Controls.Add(this.btn_selectGetSetProjPath);
+            this.tp_getsetBatch.Controls.Add(this.tb_getsetProjPath);
+            this.tp_getsetBatch.Location = new System.Drawing.Point(4, 22);
+            this.tp_getsetBatch.Name = "tp_getsetBatch";
+            this.tp_getsetBatch.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_getsetBatch.Size = new System.Drawing.Size(591, 545);
+            this.tp_getsetBatch.TabIndex = 1;
+            this.tp_getsetBatch.Text = "getset批量处理";
+            this.tp_getsetBatch.UseVisualStyleBackColor = true;
+            // 
+            // btn_genGetAndSet
+            // 
+            this.btn_genGetAndSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_genGetAndSet.Location = new System.Drawing.Point(6, 38);
+            this.btn_genGetAndSet.Name = "btn_genGetAndSet";
+            this.btn_genGetAndSet.Size = new System.Drawing.Size(577, 54);
+            this.btn_genGetAndSet.TabIndex = 8;
+            this.btn_genGetAndSet.Text = "批量扫描文件生成getter/setter";
+            this.btn_genGetAndSet.UseVisualStyleBackColor = true;
+            this.btn_genGetAndSet.Click += new System.EventHandler(this.btn_genGetAndSet_Click);
+            // 
+            // btn_selectGetSetProjPath
+            // 
+            this.btn_selectGetSetProjPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_selectGetSetProjPath.Location = new System.Drawing.Point(502, 10);
+            this.btn_selectGetSetProjPath.Name = "btn_selectGetSetProjPath";
+            this.btn_selectGetSetProjPath.Size = new System.Drawing.Size(81, 23);
+            this.btn_selectGetSetProjPath.TabIndex = 7;
+            this.btn_selectGetSetProjPath.Text = "选择文件夹";
+            this.btn_selectGetSetProjPath.UseVisualStyleBackColor = true;
+            this.btn_selectGetSetProjPath.Click += new System.EventHandler(this.btn_selectProjPath_Click);
+            // 
+            // tb_getsetProjPath
+            // 
+            this.tb_getsetProjPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_getsetProjPath.Location = new System.Drawing.Point(8, 10);
+            this.tb_getsetProjPath.Multiline = true;
+            this.tb_getsetProjPath.Name = "tb_getsetProjPath";
+            this.tb_getsetProjPath.Size = new System.Drawing.Size(488, 23);
+            this.tb_getsetProjPath.TabIndex = 6;
+            // 
+            // tp_ctorBatch
+            // 
+            this.tp_ctorBatch.Controls.Add(this.richTextBox2);
+            this.tp_ctorBatch.Controls.Add(this.cb_skipAutowired);
+            this.tp_ctorBatch.Controls.Add(this.btn_batchGenCtor);
+            this.tp_ctorBatch.Controls.Add(this.btn_selectCtorFolder);
+            this.tp_ctorBatch.Controls.Add(this.tb_ctorFolder);
+            this.tp_ctorBatch.Location = new System.Drawing.Point(4, 22);
+            this.tp_ctorBatch.Name = "tp_ctorBatch";
+            this.tp_ctorBatch.Size = new System.Drawing.Size(591, 545);
+            this.tp_ctorBatch.TabIndex = 2;
+            this.tp_ctorBatch.Text = "构造方法处理";
+            this.tp_ctorBatch.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox2.Enabled = false;
+            this.richTextBox2.Location = new System.Drawing.Point(7, 3);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(576, 102);
+            this.richTextBox2.TabIndex = 13;
+            this.richTextBox2.Text = "1、目前只对拥有private字段的，且无构造方法的类进行处理";
             // 
             // cb_skipAutowired
             // 
@@ -226,64 +313,29 @@
             this.tb_ctorFolder.Size = new System.Drawing.Size(488, 23);
             this.tb_ctorFolder.TabIndex = 9;
             // 
-            // tabPage2
+            // tp_codeFixBatch
             // 
-            this.tabPage2.Controls.Add(this.btn_genGetAndSet);
-            this.tabPage2.Controls.Add(this.btn_selectGetSetProjPath);
-            this.tabPage2.Controls.Add(this.tb_getsetProjPath);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(591, 545);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "预留";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tp_codeFixBatch.Controls.Add(this.richTextBox1);
+            this.tp_codeFixBatch.Controls.Add(this.btn_processForceFix);
+            this.tp_codeFixBatch.Controls.Add(this.btn_selectForceFixProj);
+            this.tp_codeFixBatch.Controls.Add(this.tb_forceFixProj);
+            this.tp_codeFixBatch.Location = new System.Drawing.Point(4, 22);
+            this.tp_codeFixBatch.Name = "tp_codeFixBatch";
+            this.tp_codeFixBatch.Size = new System.Drawing.Size(591, 545);
+            this.tp_codeFixBatch.TabIndex = 3;
+            this.tp_codeFixBatch.Text = "规范强制转换";
+            this.tp_codeFixBatch.UseVisualStyleBackColor = true;
             // 
-            // btn_genGetAndSet
+            // richTextBox1
             // 
-            this.btn_genGetAndSet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_genGetAndSet.Location = new System.Drawing.Point(6, 38);
-            this.btn_genGetAndSet.Name = "btn_genGetAndSet";
-            this.btn_genGetAndSet.Size = new System.Drawing.Size(577, 54);
-            this.btn_genGetAndSet.TabIndex = 8;
-            this.btn_genGetAndSet.Text = "批量扫描文件生成getter/setter";
-            this.btn_genGetAndSet.UseVisualStyleBackColor = true;
-            this.btn_genGetAndSet.Click += new System.EventHandler(this.btn_genGetAndSet_Click);
-            // 
-            // btn_selectGetSetProjPath
-            // 
-            this.btn_selectGetSetProjPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_selectGetSetProjPath.Location = new System.Drawing.Point(502, 10);
-            this.btn_selectGetSetProjPath.Name = "btn_selectGetSetProjPath";
-            this.btn_selectGetSetProjPath.Size = new System.Drawing.Size(81, 23);
-            this.btn_selectGetSetProjPath.TabIndex = 7;
-            this.btn_selectGetSetProjPath.Text = "选择文件夹";
-            this.btn_selectGetSetProjPath.UseVisualStyleBackColor = true;
-            this.btn_selectGetSetProjPath.Click += new System.EventHandler(this.btn_selectProjPath_Click);
-            // 
-            // tb_getsetProjPath
-            // 
-            this.tb_getsetProjPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_getsetProjPath.Location = new System.Drawing.Point(8, 10);
-            this.tb_getsetProjPath.Multiline = true;
-            this.tb_getsetProjPath.Name = "tb_getsetProjPath";
-            this.tb_getsetProjPath.Size = new System.Drawing.Size(488, 23);
-            this.tb_getsetProjPath.TabIndex = 6;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.richTextBox1);
-            this.tabPage3.Controls.Add(this.btn_processForceFix);
-            this.tabPage3.Controls.Add(this.btn_selectForceFixProj);
-            this.tabPage3.Controls.Add(this.tb_forceFixProj);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(591, 545);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "规范强制转换";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.richTextBox1.Enabled = false;
+            this.richTextBox1.Location = new System.Drawing.Point(7, 3);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(576, 138);
+            this.richTextBox1.TabIndex = 12;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // btn_processForceFix
             // 
@@ -318,27 +370,187 @@
             this.tb_forceFixProj.Size = new System.Drawing.Size(488, 23);
             this.tb_forceFixProj.TabIndex = 9;
             // 
-            // richTextBox1
+            // tp_java2Cs
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tp_java2Cs.Controls.Add(this.btn_j2cGenCodeFile);
+            this.tp_java2Cs.Controls.Add(this.label3);
+            this.tp_java2Cs.Controls.Add(this.btn_j2cConvert);
+            this.tp_java2Cs.Controls.Add(this.splitContainer2);
+            this.tp_java2Cs.Location = new System.Drawing.Point(4, 22);
+            this.tp_java2Cs.Name = "tp_java2Cs";
+            this.tp_java2Cs.Size = new System.Drawing.Size(591, 545);
+            this.tp_java2Cs.TabIndex = 4;
+            this.tp_java2Cs.Text = "java2C#";
+            this.tp_java2Cs.UseVisualStyleBackColor = true;
+            // 
+            // btn_j2cGenCodeFile
+            // 
+            this.btn_j2cGenCodeFile.Location = new System.Drawing.Point(415, 8);
+            this.btn_j2cGenCodeFile.Name = "btn_j2cGenCodeFile";
+            this.btn_j2cGenCodeFile.Size = new System.Drawing.Size(167, 23);
+            this.btn_j2cGenCodeFile.TabIndex = 13;
+            this.btn_j2cGenCodeFile.Text = "临时：直接挑选";
+            this.btn_j2cGenCodeFile.UseVisualStyleBackColor = true;
+            this.btn_j2cGenCodeFile.Click += new System.EventHandler(this.btn_j2cGenCodeFile_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "仅支持java实体类到C#";
+            // 
+            // btn_j2cConvert
+            // 
+            this.btn_j2cConvert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(7, 3);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(576, 138);
-            this.richTextBox1.TabIndex = 12;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.btn_j2cConvert.Location = new System.Drawing.Point(260, 506);
+            this.btn_j2cConvert.Name = "btn_j2cConvert";
+            this.btn_j2cConvert.Size = new System.Drawing.Size(72, 35);
+            this.btn_j2cConvert.TabIndex = 11;
+            this.btn_j2cConvert.Text = "转换代码片段=>";
+            this.btn_j2cConvert.UseVisualStyleBackColor = true;
+            this.btn_j2cConvert.Click += new System.EventHandler(this.btn_j2cConvert_Click);
             // 
-            // richTextBox2
+            // splitContainer2
             // 
-            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox2.Enabled = false;
-            this.richTextBox2.Location = new System.Drawing.Point(7, 3);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(576, 102);
-            this.richTextBox2.TabIndex = 13;
-            this.richTextBox2.Text = "1、目前只对拥有private字段的，且无构造方法的类进行处理";
+            this.splitContainer2.Location = new System.Drawing.Point(8, 44);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.rtb_j2cSrc);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.rtb_j2cTar);
+            this.splitContainer2.Size = new System.Drawing.Size(575, 456);
+            this.splitContainer2.SplitterDistance = 287;
+            this.splitContainer2.TabIndex = 10;
+            // 
+            // rtb_j2cSrc
+            // 
+            this.rtb_j2cSrc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_j2cSrc.Location = new System.Drawing.Point(0, 0);
+            this.rtb_j2cSrc.Name = "rtb_j2cSrc";
+            this.rtb_j2cSrc.Size = new System.Drawing.Size(287, 456);
+            this.rtb_j2cSrc.TabIndex = 6;
+            this.rtb_j2cSrc.Text = "";
+            // 
+            // rtb_j2cTar
+            // 
+            this.rtb_j2cTar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_j2cTar.Location = new System.Drawing.Point(0, 0);
+            this.rtb_j2cTar.Name = "rtb_j2cTar";
+            this.rtb_j2cTar.Size = new System.Drawing.Size(284, 456);
+            this.rtb_j2cTar.TabIndex = 6;
+            this.rtb_j2cTar.Text = "";
+            // 
+            // tp_unitTestGenerator
+            // 
+            this.tp_unitTestGenerator.Controls.Add(this.rtb_unitTestGen);
+            this.tp_unitTestGenerator.Controls.Add(this.splitContainer3);
+            this.tp_unitTestGenerator.Controls.Add(this.label4);
+            this.tp_unitTestGenerator.Controls.Add(this.tb_unitTestAuthor);
+            this.tp_unitTestGenerator.Controls.Add(this.label6);
+            this.tp_unitTestGenerator.Controls.Add(this.label5);
+            this.tp_unitTestGenerator.Location = new System.Drawing.Point(4, 22);
+            this.tp_unitTestGenerator.Name = "tp_unitTestGenerator";
+            this.tp_unitTestGenerator.Size = new System.Drawing.Size(591, 545);
+            this.tp_unitTestGenerator.TabIndex = 5;
+            this.tp_unitTestGenerator.Text = "单元测试方法生成";
+            this.tp_unitTestGenerator.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(391, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 12);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "@author字段名";
+            // 
+            // tb_unitTestAuthor
+            // 
+            this.tb_unitTestAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_unitTestAuthor.Location = new System.Drawing.Point(483, 14);
+            this.tb_unitTestAuthor.Name = "tb_unitTestAuthor";
+            this.tb_unitTestAuthor.Size = new System.Drawing.Size(100, 21);
+            this.tb_unitTestAuthor.TabIndex = 13;
+            this.tb_unitTestAuthor.Text = "曾昭亮/80231356";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "处理设置：";
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer3.Location = new System.Drawing.Point(8, 65);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.rtb_unitTestSrcCode);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.rtb_unitTestTarCode);
+            this.splitContainer3.Size = new System.Drawing.Size(575, 435);
+            this.splitContainer3.SplitterDistance = 287;
+            this.splitContainer3.TabIndex = 15;
+            // 
+            // rtb_unitTestSrcCode
+            // 
+            this.rtb_unitTestSrcCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_unitTestSrcCode.Location = new System.Drawing.Point(0, 0);
+            this.rtb_unitTestSrcCode.Name = "rtb_unitTestSrcCode";
+            this.rtb_unitTestSrcCode.Size = new System.Drawing.Size(287, 435);
+            this.rtb_unitTestSrcCode.TabIndex = 6;
+            this.rtb_unitTestSrcCode.Text = "";
+            // 
+            // rtb_unitTestTarCode
+            // 
+            this.rtb_unitTestTarCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_unitTestTarCode.Location = new System.Drawing.Point(0, 0);
+            this.rtb_unitTestTarCode.Name = "rtb_unitTestTarCode";
+            this.rtb_unitTestTarCode.Size = new System.Drawing.Size(284, 435);
+            this.rtb_unitTestTarCode.TabIndex = 6;
+            this.rtb_unitTestTarCode.Text = "";
+            // 
+            // rtb_unitTestGen
+            // 
+            this.rtb_unitTestGen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_unitTestGen.Location = new System.Drawing.Point(8, 502);
+            this.rtb_unitTestGen.Name = "rtb_unitTestGen";
+            this.rtb_unitTestGen.Size = new System.Drawing.Size(575, 35);
+            this.rtb_unitTestGen.TabIndex = 16;
+            this.rtb_unitTestGen.Text = "转换代码片段=>";
+            this.rtb_unitTestGen.UseVisualStyleBackColor = true;
+            this.rtb_unitTestGen.Click += new System.EventHandler(this.rtb_unitTestGen_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(413, 12);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "处理完成后，需要手动修复JsonHelpr的import，和测试类所在package信息：";
             // 
             // Form1
             // 
@@ -350,18 +562,30 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPageGetSetProcess.ResumeLayout(false);
-            this.tabPageGetSetProcess.PerformLayout();
+            this.tp_GetSetProcess.ResumeLayout(false);
+            this.tp_GetSetProcess.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tp_getsetBatch.ResumeLayout(false);
+            this.tp_getsetBatch.PerformLayout();
+            this.tp_ctorBatch.ResumeLayout(false);
+            this.tp_ctorBatch.PerformLayout();
+            this.tp_codeFixBatch.ResumeLayout(false);
+            this.tp_codeFixBatch.PerformLayout();
+            this.tp_java2Cs.ResumeLayout(false);
+            this.tp_java2Cs.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.tp_unitTestGenerator.ResumeLayout(false);
+            this.tp_unitTestGenerator.PerformLayout();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -369,10 +593,10 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageGetSetProcess;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tp_GetSetProcess;
+        private System.Windows.Forms.TabPage tp_getsetBatch;
+        private System.Windows.Forms.TabPage tp_ctorBatch;
+        private System.Windows.Forms.TabPage tp_codeFixBatch;
         private System.Windows.Forms.Button btn_convertSnippet;
         private System.Windows.Forms.RichTextBox rtb_tarCodeSnippet;
         private System.Windows.Forms.RichTextBox rtb_srcCodeSnippet;
@@ -392,6 +616,22 @@
         private System.Windows.Forms.Button btn_selectForceFixProj;
         private System.Windows.Forms.TextBox tb_forceFixProj;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.TabPage tp_java2Cs;
+        private System.Windows.Forms.Button btn_j2cConvert;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.RichTextBox rtb_j2cSrc;
+        private System.Windows.Forms.RichTextBox rtb_j2cTar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_j2cGenCodeFile;
+        private System.Windows.Forms.TabPage tp_unitTestGenerator;
+        private System.Windows.Forms.Button rtb_unitTestGen;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.RichTextBox rtb_unitTestSrcCode;
+        private System.Windows.Forms.RichTextBox rtb_unitTestTarCode;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tb_unitTestAuthor;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

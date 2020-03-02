@@ -120,7 +120,7 @@ namespace JavaToolsBiz.Util
             //--删掉结尾}，准备添加内容：
             string newFileContent = Regex.Replace(fileContent, @"\}\s*$", "", RegexOptions.Singleline); //单行模式下：匹配文件末尾的}
                                                                                                         //--再删掉@Data注解
-            newFileContent = Regex.Replace(newFileContent, @"@Data\s+\n", "");
+            newFileContent = Regex.Replace(newFileContent, @"@Data\s*\n", "");
             //--删掉import：
             newFileContent = Regex.Replace(newFileContent, @"import lombok.Data;\s+", "");
             //--放入文件内容中：
@@ -220,5 +220,6 @@ namespace JavaToolsBiz.Util
             //处理OK
             return true;
         }
+
     }
 }
