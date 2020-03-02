@@ -24,7 +24,7 @@ namespace JavaToolsBiz.Util
             if (classNameMatch.Success)
             {
                 className = classNameMatch.Groups[1].Value;  //取className
-                classInstanceName = className.Substring(0, 1).ToLower() + className.Substring(1); //取className，首字母小写
+                classInstanceName = Regex.Replace(className, @"^([A-Z]*)(\w+)", (matched)=> { return matched.Groups[1].Value.ToLower() + matched.Groups[2].Value; });  //首字母为大写起头的部分则均转为小写
             }
             else
             {

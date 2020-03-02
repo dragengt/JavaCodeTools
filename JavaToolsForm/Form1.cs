@@ -37,6 +37,8 @@ namespace JavaToolsForm
             ConfigUtil.ListenControl(tb_unitTestAuthor);
 
             this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
+            
+
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
