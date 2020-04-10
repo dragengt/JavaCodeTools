@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tab_springFileCreate = new System.Windows.Forms.TabControl();
             this.tp_GetSetProcess = new System.Windows.Forms.TabPage();
+            this.cb_genSwaggerComment = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_author = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -61,15 +62,20 @@
             this.rtb_j2cSrc = new System.Windows.Forms.RichTextBox();
             this.rtb_j2cTar = new System.Windows.Forms.RichTextBox();
             this.tp_unitTestGenerator = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tb_unitTestAuthor = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.rtb_unitTestGen = new System.Windows.Forms.Button();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.rtb_unitTestSrcCode = new System.Windows.Forms.RichTextBox();
             this.rtb_unitTestTarCode = new System.Windows.Forms.RichTextBox();
-            this.rtb_unitTestGen = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tb_unitTestAuthor = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tb_springFileToProc = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cb_alwaysTopWindow = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tab_springFileCreate.SuspendLayout();
             this.tp_GetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -88,25 +94,31 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tab_springFileCreate
             // 
-            this.tabControl1.Controls.Add(this.tp_GetSetProcess);
-            this.tabControl1.Controls.Add(this.tp_getsetBatch);
-            this.tabControl1.Controls.Add(this.tp_ctorBatch);
-            this.tabControl1.Controls.Add(this.tp_codeFixBatch);
-            this.tabControl1.Controls.Add(this.tp_java2Cs);
-            this.tabControl1.Controls.Add(this.tp_unitTestGenerator);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(599, 571);
-            this.tabControl1.TabIndex = 0;
+            this.tab_springFileCreate.Controls.Add(this.tp_GetSetProcess);
+            this.tab_springFileCreate.Controls.Add(this.tp_getsetBatch);
+            this.tab_springFileCreate.Controls.Add(this.tp_ctorBatch);
+            this.tab_springFileCreate.Controls.Add(this.tp_codeFixBatch);
+            this.tab_springFileCreate.Controls.Add(this.tp_java2Cs);
+            this.tab_springFileCreate.Controls.Add(this.tp_unitTestGenerator);
+            this.tab_springFileCreate.Controls.Add(this.tabPage1);
+            this.tab_springFileCreate.Controls.Add(this.tabPage2);
+            this.tab_springFileCreate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tab_springFileCreate.Location = new System.Drawing.Point(0, 0);
+            this.tab_springFileCreate.Name = "tab_springFileCreate";
+            this.tab_springFileCreate.SelectedIndex = 0;
+            this.tab_springFileCreate.Size = new System.Drawing.Size(599, 571);
+            this.tab_springFileCreate.TabIndex = 0;
             // 
             // tp_GetSetProcess
             // 
+            this.tp_GetSetProcess.Controls.Add(this.label7);
+            this.tp_GetSetProcess.Controls.Add(this.cb_genSwaggerComment);
             this.tp_GetSetProcess.Controls.Add(this.label2);
             this.tp_GetSetProcess.Controls.Add(this.tb_author);
             this.tp_GetSetProcess.Controls.Add(this.splitContainer1);
@@ -119,6 +131,16 @@
             this.tp_GetSetProcess.TabIndex = 0;
             this.tp_GetSetProcess.Text = "Getter/Setter处理";
             this.tp_GetSetProcess.UseVisualStyleBackColor = true;
+            // 
+            // cb_genSwaggerComment
+            // 
+            this.cb_genSwaggerComment.AutoSize = true;
+            this.cb_genSwaggerComment.Location = new System.Drawing.Point(101, 19);
+            this.cb_genSwaggerComment.Name = "cb_genSwaggerComment";
+            this.cb_genSwaggerComment.Size = new System.Drawing.Size(168, 16);
+            this.cb_genSwaggerComment.TabIndex = 12;
+            this.cb_genSwaggerComment.Text = "同时生成swagger的API注释";
+            this.cb_genSwaggerComment.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -155,7 +177,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.rtb_tarCodeSnippet);
-            this.splitContainer1.Size = new System.Drawing.Size(575, 456);
+            this.splitContainer1.Size = new System.Drawing.Size(575, 390);
             this.splitContainer1.SplitterDistance = 287;
             this.splitContainer1.TabIndex = 9;
             // 
@@ -164,7 +186,7 @@
             this.rtb_srcCodeSnippet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_srcCodeSnippet.Location = new System.Drawing.Point(0, 0);
             this.rtb_srcCodeSnippet.Name = "rtb_srcCodeSnippet";
-            this.rtb_srcCodeSnippet.Size = new System.Drawing.Size(287, 456);
+            this.rtb_srcCodeSnippet.Size = new System.Drawing.Size(287, 390);
             this.rtb_srcCodeSnippet.TabIndex = 6;
             this.rtb_srcCodeSnippet.Text = "";
             // 
@@ -173,14 +195,14 @@
             this.rtb_tarCodeSnippet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_tarCodeSnippet.Location = new System.Drawing.Point(0, 0);
             this.rtb_tarCodeSnippet.Name = "rtb_tarCodeSnippet";
-            this.rtb_tarCodeSnippet.Size = new System.Drawing.Size(284, 456);
+            this.rtb_tarCodeSnippet.Size = new System.Drawing.Size(284, 390);
             this.rtb_tarCodeSnippet.TabIndex = 6;
             this.rtb_tarCodeSnippet.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 18);
+            this.label1.Location = new System.Drawing.Point(8, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 8;
@@ -466,33 +488,17 @@
             this.tp_unitTestGenerator.Text = "单元测试方法生成";
             this.tp_unitTestGenerator.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // rtb_unitTestGen
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(391, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 12);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "@author字段名";
-            // 
-            // tb_unitTestAuthor
-            // 
-            this.tb_unitTestAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_unitTestAuthor.Location = new System.Drawing.Point(483, 14);
-            this.tb_unitTestAuthor.Name = "tb_unitTestAuthor";
-            this.tb_unitTestAuthor.Size = new System.Drawing.Size(100, 21);
-            this.tb_unitTestAuthor.TabIndex = 13;
-            this.tb_unitTestAuthor.Text = "曾昭亮/80231356";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "处理设置：";
+            this.rtb_unitTestGen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtb_unitTestGen.Location = new System.Drawing.Point(8, 502);
+            this.rtb_unitTestGen.Name = "rtb_unitTestGen";
+            this.rtb_unitTestGen.Size = new System.Drawing.Size(575, 35);
+            this.rtb_unitTestGen.TabIndex = 16;
+            this.rtb_unitTestGen.Text = "转换代码片段=>";
+            this.rtb_unitTestGen.UseVisualStyleBackColor = true;
+            this.rtb_unitTestGen.Click += new System.EventHandler(this.rtb_unitTestGen_Click);
             // 
             // splitContainer3
             // 
@@ -531,17 +537,24 @@
             this.rtb_unitTestTarCode.TabIndex = 6;
             this.rtb_unitTestTarCode.Text = "";
             // 
-            // rtb_unitTestGen
+            // label4
             // 
-            this.rtb_unitTestGen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtb_unitTestGen.Location = new System.Drawing.Point(8, 502);
-            this.rtb_unitTestGen.Name = "rtb_unitTestGen";
-            this.rtb_unitTestGen.Size = new System.Drawing.Size(575, 35);
-            this.rtb_unitTestGen.TabIndex = 16;
-            this.rtb_unitTestGen.Text = "转换代码片段=>";
-            this.rtb_unitTestGen.UseVisualStyleBackColor = true;
-            this.rtb_unitTestGen.Click += new System.EventHandler(this.rtb_unitTestGen_Click);
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(391, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 12);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "@author字段名";
+            // 
+            // tb_unitTestAuthor
+            // 
+            this.tb_unitTestAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_unitTestAuthor.Location = new System.Drawing.Point(483, 14);
+            this.tb_unitTestAuthor.Name = "tb_unitTestAuthor";
+            this.tb_unitTestAuthor.Size = new System.Drawing.Size(100, 21);
+            this.tb_unitTestAuthor.TabIndex = 13;
+            this.tb_unitTestAuthor.Text = "曾昭亮/80231356";
             // 
             // label6
             // 
@@ -552,16 +565,79 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "处理完成后，需要手动修复JsonHelpr的import，和测试类所在package信息：";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 14);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "处理设置：";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.tb_springFileToProc);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(591, 545);
+            this.tabPage1.TabIndex = 6;
+            this.tabPage1.Text = "文件自动生成";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tb_springFileToProc
+            // 
+            this.tb_springFileToProc.AllowDrop = true;
+            this.tb_springFileToProc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_springFileToProc.Location = new System.Drawing.Point(8, 6);
+            this.tb_springFileToProc.Multiline = true;
+            this.tb_springFileToProc.Name = "tb_springFileToProc";
+            this.tb_springFileToProc.Size = new System.Drawing.Size(575, 292);
+            this.tb_springFileToProc.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.cb_alwaysTopWindow);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(591, 545);
+            this.tabPage2.TabIndex = 7;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cb_alwaysTopWindow
+            // 
+            this.cb_alwaysTopWindow.AutoSize = true;
+            this.cb_alwaysTopWindow.Location = new System.Drawing.Point(29, 21);
+            this.cb_alwaysTopWindow.Name = "cb_alwaysTopWindow";
+            this.cb_alwaysTopWindow.Size = new System.Drawing.Size(96, 16);
+            this.cb_alwaysTopWindow.TabIndex = 0;
+            this.cb_alwaysTopWindow.Text = "窗口总在最前";
+            this.cb_alwaysTopWindow.UseVisualStyleBackColor = true;
+            this.cb_alwaysTopWindow.CheckedChanged += new System.EventHandler(this.cb_alwaysTopWindow_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 449);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(245, 48);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "用于entity的代码片段处理：左边填写标准的\r\n/**注释*/\r\nprivate XX xxx;\r\n即可转换生成对应的get/set方法+对应注释";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 571);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tab_springFileCreate);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tab_springFileCreate.ResumeLayout(false);
             this.tp_GetSetProcess.ResumeLayout(false);
             this.tp_GetSetProcess.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -586,13 +662,17 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tab_springFileCreate;
         private System.Windows.Forms.TabPage tp_GetSetProcess;
         private System.Windows.Forms.TabPage tp_getsetBatch;
         private System.Windows.Forms.TabPage tp_ctorBatch;
@@ -632,6 +712,12 @@
         private System.Windows.Forms.TextBox tb_unitTestAuthor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox cb_genSwaggerComment;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox tb_springFileToProc;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.CheckBox cb_alwaysTopWindow;
+        private System.Windows.Forms.Label label7;
     }
 }
 
