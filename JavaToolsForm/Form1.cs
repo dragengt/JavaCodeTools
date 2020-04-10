@@ -62,11 +62,13 @@ namespace JavaToolsForm
                 MessageBox.Show("本地路径为空");
                 return;
             }
-            
-            List<string> processedList, unableList;
-            JavaGetSetterGenerator.ProcessFolder(scanPath, out processedList,out unableList);
+            UIUtil.TryAction(() =>
+            {
+                List<string> processedList, unableList;
+                JavaGetSetterGenerator.ProcessFolder(scanPath, out processedList, out unableList);
 
-            ShowReport(processedList, unableList);
+                ShowReport(processedList, unableList);
+            });
         }
 
 
@@ -80,10 +82,14 @@ namespace JavaToolsForm
                 return;
             }
             List<string> processedList, unableList;
-            JavaConstructorFixer.SetSkipAutowired(cb_skipAutowired.Checked);
-            JavaConstructorFixer.ProcessFolder(scanPath, out processedList, out unableList);
 
-            ShowReport(processedList, unableList);
+            UIUtil.TryAction(() =>
+            {
+                JavaConstructorFixer.SetSkipAutowired(cb_skipAutowired.Checked);
+                JavaConstructorFixer.ProcessFolder(scanPath, out processedList, out unableList);
+
+                ShowReport(processedList, unableList);
+            });
         }
 
         //强制转换规范
@@ -95,11 +101,13 @@ namespace JavaToolsForm
                 MessageBox.Show("本地路径为空");
                 return;
             }
-            
-            List<string> processedList, unableList;
-            JavaCodeForceFixer.ProcessFolder(scanPath, out processedList,out unableList);
+            UIUtil.TryAction(() =>
+            {
+                List<string> processedList, unableList;
+                JavaCodeForceFixer.ProcessFolder(scanPath, out processedList, out unableList);
 
-            ShowReport(processedList, unableList);
+                ShowReport(processedList, unableList);
+            });
         }
        
         //转换get/set 代码段
@@ -110,8 +118,10 @@ namespace JavaToolsForm
                 MessageBox.Show("没啥代码可转换的。");
                 return;
             }
-
-            rtb_tarCodeSnippet.Text = JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text,cb_genSwaggerComment.Checked);
+            UIUtil.TryAction(() =>
+            {
+                rtb_tarCodeSnippet.Text = JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text, cb_genSwaggerComment.Checked);
+            });
         }
 
         //Java代码转C#处理
@@ -123,8 +133,10 @@ namespace JavaToolsForm
                 MessageBox.Show("没啥代码可转换的。");
                 return;
             }
-
-            rtb_j2cTar.Text = JavaCode2CSharpGenerator.ConvertJava2CSharp(src);
+            UIUtil.TryAction(() =>
+            {
+                rtb_j2cTar.Text = JavaCode2CSharpGenerator.ConvertJava2CSharp(src);
+            });
         }
 
         //Java单元测试代码生成
@@ -138,7 +150,10 @@ namespace JavaToolsForm
                 return;
             }
             JavaUnitTestGenerator.g_authorInfo = tb_unitTestAuthor.Text;
-            rtb_unitTestTarCode.Text = JavaUnitTestGenerator.ProcessCode(src).ToString();
+            UIUtil.TryAction(() =>
+            {
+                rtb_unitTestTarCode.Text = JavaUnitTestGenerator.ProcessCode(src).ToString();
+            });
         }
 
         //临时：
@@ -293,10 +308,12 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
 
             //注释预设
-            
+
             //范例：
             //F:\java\workspace\LU14_RiskView_Svc\LU14_RiskView_Svc\src\main\java\com\cmb\cvm\biznotify\mapper\health\HealthMapper.java
+            UIUtil.TryAction(() => {
 
+            });
         }
 
         private void cb_alwaysTopWindow_CheckedChanged(object sender, EventArgs e)
