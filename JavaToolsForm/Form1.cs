@@ -25,27 +25,31 @@ namespace JavaToolsForm
         private void Form1_Load(object sender, EventArgs e)
         {
             //暂时不显示批量处理，暂时有问题
-            tbInvisible = tabControl1.TabPages[2];
-            tabControl1.TabPages.RemoveAt(2);
+            tbInvisible = tab_springFileCreate.TabPages[2];
+            tab_springFileCreate.TabPages.RemoveAt(2);
             tb_author. KeyDown += Form1_KeyDown;
             
-            //Config 监听：
-            ConfigUtil.ListenControl(tb_getsetProjPath);
-            ConfigUtil.ListenControl(tb_author);
-            ConfigUtil.ListenControl(tb_ctorFolder);
-            ConfigUtil.ListenControl(tb_forceFixProj);
-            ConfigUtil.ListenControl(tb_unitTestAuthor);
+            //Config 监听以下控件变动
+            ConfigUtil.ListenControl(tb_getsetProjPath);            //批量生成get/set的目录
+            ConfigUtil.ListenControl(tb_author);                            //作者字段
+            ConfigUtil.ListenControl(tb_ctorFolder);                    //用于批量处理构造方法目录
+            ConfigUtil.ListenControl(tb_forceFixProj);               // 
+            ConfigUtil.ListenControl(tb_unitTestAuthor);         //单元测试的注释作者字段
+            ConfigUtil.ListenControl(cb_alwaysTopWindow);  //是否总在最前
 
-            this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig(); 
-            
+            this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig();
 
+            //支持文件拖拽到文本框：
+            tb_springFileToProc.DragEnter += Tb_springFileToProc_DragEnter;
+            tb_springFileToProc.DragDrop += Tb_springFileToProc_DragDrop;
         }
+
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.Alt && e.KeyCode== Keys.C&&tb_author.Text=="曾昭亮/80231356")
             {
-                tabControl1.TabPages.Add(tbInvisible);
+                tab_springFileCreate.TabPages.Add(tbInvisible);
             }
         }
 
@@ -107,7 +111,7 @@ namespace JavaToolsForm
                 return;
             }
 
-            rtb_tarCodeSnippet.Text = JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text);
+            rtb_tarCodeSnippet.Text = JavaGetSetterGenerator.ConvertCodeWithGetSetter(rtb_srcCodeSnippet.Text,cb_genSwaggerComment.Checked);
         }
 
         //Java代码转C#处理
@@ -249,5 +253,61 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             processReportForm.Activate();
         }
 
+        /// <summary>
+        /// 文件拖拽-结束
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Tb_springFileToProc_DragDrop(object sender, DragEventArgs e)
+        {
+            var datas = (System.Array)e.Data.GetData(DataFormats.FileDrop);
+            foreach (var data in datas)
+            {
+                tb_springFileToProc.AppendText(data.ToString());
+                tb_springFileToProc.AppendText("\n");
+                
+            }
+        }
+
+        /// <summary>
+        /// 文件拖拽-进入TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Tb_springFileToProc_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.All;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+        private void Cb_ToggleCombox()
+        {
+            //Mapper->生成Resource对应Mapper
+            //Controller->生成Service层、Mapper层、
+            //Service->生成Mapper层
+            //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
+
+            //注释预设
+            
+            //范例：
+            //F:\java\workspace\LU14_RiskView_Svc\LU14_RiskView_Svc\src\main\java\com\cmb\cvm\biznotify\mapper\health\HealthMapper.java
+
+        }
+
+        private void cb_alwaysTopWindow_CheckedChanged(object sender, EventArgs e)
+        {
+            //是否窗体最前设置：
+            RefreshWindowTopLevel();
+        }
+
+        private void RefreshWindowTopLevel()
+        {
+            this.TopMost = cb_alwaysTopWindow.Checked;
+        }
     }
 }
