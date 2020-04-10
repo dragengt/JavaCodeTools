@@ -52,6 +52,7 @@
     <Compile Include="Util\JavaCodeForceFixer.cs" />
     <Compile Include="Util\JavaConstructorFixer.cs" />
     <Compile Include="Util\JavaGetSetterGenerator.cs" />
+    <Compile Include="Util\JavaSpringBootFileCreator.cs" />
     <Compile Include="Util\JavaUnitTestGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,18 @@
     <None Include="JavaTools_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JavaCodeTemplate\ControllerTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JavaCodeTemplate\MapperResourceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JavaCodeTemplate\ServiceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="JavaCodeTemplate\MapperTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

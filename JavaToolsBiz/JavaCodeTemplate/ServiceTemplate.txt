@@ -1,0 +1,37 @@
+﻿/**
+ * {JAVA_FILE_NAME}.java
+ *
+ * Copyright (c) 2020 招商银行信息技术部版权所有
+ */
+{PACKAGE_INFO}
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cmb.rsc.svc.common.constant.HealthConstants;
+import com.cmb.rsc.svc.mapper.health.HealthMapper;
+
+/**
+ * {CLASS_COMMENT}
+ * 
+ * @author {AUTHOR_NAME}
+ * @createdate {CREATE_DATE}
+ */
+@Service
+public class {JAVA_FILE_NAME}
+{
+
+    @Autowired
+    private {MEM_TYPE} {MEM_NAME};
+
+     {FUNC_AREA}
+
+    /**
+     * 默认构造函数
+     */
+    public HealthService()
+    {
+        //默认无参构造方法，无操作。如有List等需要初始化，请追加
+    }
+
+}
