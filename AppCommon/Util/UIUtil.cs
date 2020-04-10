@@ -30,8 +30,10 @@ namespace AppCommon.Util
             }
             catch(Exception ex)
             {
-                MessageBox.Show( errorMsgPrefix + ex.Message+"，具体错误已经记录到日志。", "出错啦~", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show( errorMsgPrefix + ex.Message+" \n具体错误已经记录到日志。", "出错啦~", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _log.Error(ex.ToString());
+
+                Console.WriteLine(ex.ToString());
             }
         }
     }

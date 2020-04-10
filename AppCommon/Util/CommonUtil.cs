@@ -214,6 +214,25 @@ namespace AppCommon.Util
 
             return processResultList;
         }
+
+        /// <summary>
+        /// 遍历string数组，去掉其中的空行内容
+        /// </summary>
+        /// <param name="fileNames"></param>
+        /// <returns></returns>
+        public static List<string>TrimEmptyLines(string[] fileNames)
+        {
+            var list= new List<string>();
+            foreach (var currFile in fileNames)
+            {
+                if (string.IsNullOrEmpty(currFile.Trim()))
+                {
+                    continue;
+                }
+                list.Add(currFile);
+            }
+            return list;
+        }
     }
 
 }
