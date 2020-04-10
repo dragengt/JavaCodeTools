@@ -300,19 +300,44 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
                 e.Effect = DragDropEffects.None;
             }
         }
+
         private void Cb_ToggleCombox()
         {
-            //Mapper->生成Resource对应Mapper
-            //Controller->生成Service层、Mapper层、
-            //Service->生成Mapper层
-            //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
-
             //注释预设
 
             //范例：
             //F:\java\workspace\LU14_RiskView_Svc\LU14_RiskView_Svc\src\main\java\com\cmb\cvm\biznotify\mapper\health\HealthMapper.java
             UIUtil.TryAction(() => {
 
+            });
+        }
+
+
+        private void tb_createSpringBootFile_Click(object sender, EventArgs e)
+        {
+
+            //Mapper->生成Resource对应Mapper
+            //Controller->生成Service层、Mapper层、
+            //Service->生成Mapper层
+            //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
+            UIUtil.TryAction(() =>
+            {
+                var fileNames = tb_springFileToProc.Text.Split('\n');
+                //去掉空行内容：
+                var fileNamesTrimed = CommonUtil.TrimEmptyLines(fileNames);
+
+                string errorMsg;
+                var type= JavaSpringBootFileCreator.AnalyzeFiles(fileNamesTrimed, out errorMsg);
+                if (type == JavaSpringBootFileCreator.SBFileType.NULL || errorMsg.Length > 0)
+                {
+                    MessageBox.Show(errorMsg.ToString());
+                }else
+                {
+                    foreach(var file in fileNamesTrimed)
+                    {
+                        JavaSpringBootFileCreator.CreateFileFor(file,type, JavaSpringBootFileCreator.SBFileType.Service);
+                    }
+                }
             });
         }
 
@@ -326,5 +351,6 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
         {
             this.TopMost = cb_alwaysTopWindow.Checked;
         }
+
     }
 }

@@ -75,6 +75,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cb_alwaysTopWindow = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.tb_createSpringBootFile = new System.Windows.Forms.Button();
             this.tab_springFileCreate.SuspendLayout();
             this.tp_GetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -576,6 +577,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tb_createSpringBootFile);
             this.tabPage1.Controls.Add(this.tb_springFileToProc);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -627,6 +629,16 @@
             this.label7.Size = new System.Drawing.Size(245, 48);
             this.label7.TabIndex = 13;
             this.label7.Text = "用于entity的代码片段处理：左边填写标准的\r\n/**注释*/\r\nprivate XX xxx;\r\n即可转换生成对应的get/set方法+对应注释";
+            // 
+            // tb_createSpringBootFile
+            // 
+            this.tb_createSpringBootFile.Location = new System.Drawing.Point(8, 341);
+            this.tb_createSpringBootFile.Name = "tb_createSpringBootFile";
+            this.tb_createSpringBootFile.Size = new System.Drawing.Size(575, 82);
+            this.tb_createSpringBootFile.TabIndex = 1;
+            this.tb_createSpringBootFile.Text = "Create";
+            this.tb_createSpringBootFile.UseVisualStyleBackColor = true;
+            this.tb_createSpringBootFile.Click += new System.EventHandler(this.tb_createSpringBootFile_Click);
             // 
             // Form1
             // 
@@ -718,6 +730,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.CheckBox cb_alwaysTopWindow;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button tb_createSpringBootFile;
     }
 }
 

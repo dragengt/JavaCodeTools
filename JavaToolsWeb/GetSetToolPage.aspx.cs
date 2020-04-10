@@ -21,7 +21,7 @@ namespace JavaWebTools
                 return;
             }
             JavaToolsBiz.Util.JavaGetSetterGenerator.g_author = tb_authorText.Text;
-            tb_tarCode.Text = JavaToolsBiz.Util.JavaGetSetterGenerator.ConvertCodeWithGetSetter(srcCode);
+            tb_tarCode.Text = JavaToolsBiz.Util.JavaGetSetterGenerator.ConvertCodeWithGetSetter(srcCode,false);
         }
     }
 }
