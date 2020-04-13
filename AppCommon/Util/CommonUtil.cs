@@ -229,7 +229,7 @@ namespace AppCommon.Util
                 {
                     continue;
                 }
-                list.Add(currFile);
+                list.Add(currFile.Trim());
             }
             return list;
         }
