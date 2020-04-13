@@ -28,7 +28,7 @@ namespace JavaToolsBiz.Util
         };
 
         /// <summary>
-        /// 文件路径名匹配：
+        /// 文件路径名匹配：(捕捉$1为controller前路径，$2位controller后路径，$3为文件名前部分，且不包括Controller.java
         /// </summary>
         static string[] C_RegexFilePathToMatch = new string[] {
             "",                                                                         //NULL
@@ -48,6 +48,30 @@ namespace JavaToolsBiz.Util
         };
 
         /// <summary>
+        /// Controller 的Request资源路径映射
+        /// </summary>
+        static string[] C_RegexReqMapPathToReplace = new string[]
+        {
+            string.Empty,
+            @"$2/$3",      //仅对Controller映射路径
+            string.Empty, //Service 和mapper不会做路径映射
+            string.Empty
+        };
+        
+        /// <summary>
+        /// Controller/Service 对于子模块的autowired的成员类型/成员名
+        /// </summary>
+        static string[] C_RegexMemTypeToReplace = new string[]
+        {
+            string.Empty,
+            "$3Service",      //Controller需要的是Service组件
+            "$3Mapper",    //Service需要的是Mapper成员
+            string.Empty   //Mapper不再需要成员
+        };
+
+
+
+        /// <summary>
         /// java文件中的package信息匹配：
         /// </summary>
         static string[] C_RegexPackagePathToMatch = new string[] {
@@ -58,14 +82,31 @@ namespace JavaToolsBiz.Util
         };
 
         /// <summary>
-        /// java文件中的package信息替换目标：
+        /// java文件中的package信息替换目标：(使用StringFormat而不是Regex）
         /// </summary>
-        static string[] C_PackagePathToFill= new string[] {
+        static string[] C_FormatPackagePathToReplace = new string[] {
             "",                                                                          //NULL
             @"package {0}.controller.{1};",                       //Controller
             @"package {0}.service.{1};",                           //Service
             @"package {0}.mapper.{1};"                          //Mapper
         };
+
+
+        /// <summary>
+        /// 将package信息替换为对应的import信息，并需要混入Format格式化{0}，将之指定为具体某个类
+        /// </summary>
+        static string[] C_FormatRegexImportMemPathToReplace = new string[]
+        {
+           "",                                                                          //NULL
+            @"import  $1.service.$2.{0};",                       //Controller时需要引入Service组件
+            @"import  $1.mapper.$2.{0};",                           //Service时需要引入mapper
+            @""                                                         //Mapper 不需要引入
+        };
+
+        /// <summary>
+        /// 生成java文件名时的作者名
+        /// </summary>
+        public static string g_javaAuthorName { get; set; }
 
         /// <summary>
         /// 分析文件列表中的类型，需要统一为Controller或Service或Mapper的情况下，会返回对应类型；否则返回Null和对应错误信息
@@ -168,7 +209,7 @@ namespace JavaToolsBiz.Util
 
             File.WriteAllText(tarFileName, sbFileContent.ToString(), Encoding.UTF8);
 
-            return false;
+            return true;
         }
 
 
@@ -184,15 +225,61 @@ namespace JavaToolsBiz.Util
             StringBuilder sb = new StringBuilder();
             string srcCode = File.ReadAllText(srcFileName);
 
-            //填充package信息：
+            Dictionary<string, string> dictCodeIndexs = new Dictionary<string, string>();
+
+            //Java文件名：
+            string javaFileName = Path.GetFileNameWithoutExtension(tarFileName);
+            dictCodeIndexs["{JAVA_FILE_NAME}"] = javaFileName;
+
+            //生成package信息：
             string packageInfo = CreatePackageInfoFrom(srcCode,srcFileType, tarFileType);
-            sb.AppendLine(packageInfo);
+            dictCodeIndexs["{PACKAGE_INFO}"] = packageInfo;
+             
+            //作者信息：
+            string authorName = g_javaAuthorName;
+            dictCodeIndexs["{AUTHOR_NAME}"] = authorName;
+
+            //生成日期：
+            string createDate = DateTime.Now.ToString("yyyy年MM月dd日");
+            dictCodeIndexs["{CREATE_DATE}"] = createDate;
+
+            //文件注释
+            string classComment = "TODO 文件注释";
+            dictCodeIndexs["{CLASS_COMMENT}"]=classComment;
+            
+            //映射路径：对controller时：
+            string reqMapPath = GetRequestPathFor(tarFileType,tarFileName);
+            dictCodeIndexs["{REQ_MAP_PATH}"] = reqMapPath;
+
+            //映射成员类型和成员名称：
+            string memType = GetMemberTypeFor(tarFileType, tarFileName);
+            dictCodeIndexs["{MEM_TYPE}"] = memType;
+            //--名称
+            string memName = GetMemberName(memType);
+            dictCodeIndexs["{MEM_NAME}"] = memName;
+            
+            //成员匹配完后，生成需要导入的import语句：
+            string importMemPath = GetImportMemPath(tarFileType, packageInfo, memType);
+            dictCodeIndexs["{IMPORT_MEM_PATH}"] = importMemPath;
+
+            //函数区：
+            string funcArea = "//TODO: 方法区域";
+            dictCodeIndexs["{FUNC_AREA}"] = funcArea;
 
 
             //读入代码模板内容
             string templateCodeFileName = GetCodeTemplateFileNameFor(tarFileType);
             string templateCodes = File.ReadAllText(templateCodeFileName);
-            
+
+            //按照模板，塞入内容：
+            foreach(var dictCode in dictCodeIndexs)
+            {
+                //不断替换成员变量：
+                templateCodes = templateCodes.Replace(dictCode.Key, dictCode.Value);
+            }
+
+            sb.Append(templateCodes);
+
             return sb;
         }
 
@@ -234,13 +321,22 @@ namespace JavaToolsBiz.Util
             var match = Regex.Match(srcCode, C_RegexPackagePathToMatch[srcIndex]);
             if(match.Success)
             {
-                return string.Format(C_PackagePathToFill[(int)tarFileType], match.Groups[1], match.Groups[2]);
+                return string.Format(C_FormatPackagePathToReplace[(int)tarFileType], match.Groups[1], match.Groups[2]);
             }
             else
             {
                 throw new Exception("没有在文件中找到对应" + srcFileType + "的package信息，可能文件内容有点不对？");
             }
         }
+
+        private static string GetImportMemPath(SBFileType tarFileType, string packageInfo,string memTypeName)
+        {
+            int tarIndex = (int)tarFileType;
+            
+            string reqPath = Regex.Replace(packageInfo, C_RegexPackagePathToMatch[tarIndex], C_FormatRegexImportMemPathToReplace[tarIndex]);
+            return string.Format(reqPath, memTypeName);
+        }
+
 
         private static void TryCreateDirectoryFor(string tarFileName)
         {
@@ -259,6 +355,40 @@ namespace JavaToolsBiz.Util
             string tarFileName = Regex.Replace(srcFileName, C_RegexFilePathToMatch[srcRegexIndex], C_RegexFilePathToReplace[tarRegexIndex]);
             
             return tarFileName;
+        }
+
+        /// <summary>
+        /// 获得Controller的RequestMapping路径地址
+        /// </summary>
+        /// <param name="tarFileType">文件类型（仅对Controller类型有效）</param>
+        /// <param name="tarFileName">文件路径</param>
+        /// <returns></returns>
+        private static string GetRequestPathFor(SBFileType tarFileType,string tarFileName)
+        {
+            int reqPathRegexIndex = (int)tarFileType;
+
+            string reqPath = Regex.Replace(tarFileName, C_RegexFilePathToMatch[reqPathRegexIndex], C_RegexReqMapPathToReplace[reqPathRegexIndex]);
+
+            return reqPath;
+        }
+
+        private static string GetMemberTypeFor(SBFileType tarFileType,string tarFileName)
+        {
+            int reqPathRegexIndex = (int)tarFileType;
+
+            string memType = Regex.Replace(tarFileName, C_RegexFilePathToMatch[reqPathRegexIndex], C_RegexMemTypeToReplace[reqPathRegexIndex]);
+
+            return memType;
+        }
+
+        private static string GetMemberName(string memberType)
+        {
+            if(string.IsNullOrEmpty(memberType))
+            {
+                return string.Empty;
+            }
+
+            return char.ToLower(memberType[0]) + memberType.Substring(1);
         }
     }
 }

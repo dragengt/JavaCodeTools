@@ -8,8 +8,7 @@
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cmb.rsc.svc.common.constant.HealthConstants;
-import com.cmb.rsc.svc.mapper.health.HealthMapper;
+{IMPORT_MEM_PATH}
 
 /**
  * {CLASS_COMMENT}
@@ -29,7 +28,7 @@ public class {JAVA_FILE_NAME}
     /**
      * 默认构造函数
      */
-    public HealthService()
+    public {JAVA_FILE_NAME}()
     {
         //默认无参构造方法，无操作。如有List等需要初始化，请追加
     }

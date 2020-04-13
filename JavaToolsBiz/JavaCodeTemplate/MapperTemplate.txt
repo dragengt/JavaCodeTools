@@ -14,7 +14,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @createdate {CREATE_DATE}
  */
 @Mapper
-public interface HealthMapper
+public interface {JAVA_FILE_NAME}
 {
     {FUNC_AREA}
 }
