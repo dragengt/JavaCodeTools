@@ -81,6 +81,11 @@
             this.tb_springFileAuthor = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.cb_createSpringController = new System.Windows.Forms.CheckBox();
+            this.cb_createSpringService = new System.Windows.Forms.CheckBox();
+            this.cb_createSpringMapper = new System.Windows.Forms.CheckBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cb_createSpringMapperResource = new System.Windows.Forms.CheckBox();
             this.tab_springFileCreate.SuspendLayout();
             this.tp_GetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -102,6 +107,7 @@
             this.splitContainer3.SuspendLayout();
             this.tp_springFileCreator.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_springFileCreate
@@ -591,6 +597,7 @@
             // 
             // tp_springFileCreator
             // 
+            this.tp_springFileCreator.Controls.Add(this.flowLayoutPanel1);
             this.tp_springFileCreator.Controls.Add(this.label11);
             this.tp_springFileCreator.Controls.Add(this.label9);
             this.tp_springFileCreator.Controls.Add(this.tb_springFileAuthor);
@@ -610,9 +617,9 @@
             // 
             this.tb_createSpringBootFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_createSpringBootFile.Location = new System.Drawing.Point(8, 443);
+            this.tb_createSpringBootFile.Location = new System.Drawing.Point(8, 473);
             this.tb_createSpringBootFile.Name = "tb_createSpringBootFile";
-            this.tb_createSpringBootFile.Size = new System.Drawing.Size(575, 82);
+            this.tb_createSpringBootFile.Size = new System.Drawing.Size(575, 52);
             this.tb_createSpringBootFile.TabIndex = 1;
             this.tb_createSpringBootFile.Text = "生成Java文件";
             this.tb_createSpringBootFile.UseVisualStyleBackColor = true;
@@ -698,6 +705,61 @@
             this.label11.TabIndex = 16;
             this.label11.Text = "1、将文件拖拽到下面文本框中，以获得文件路径";
             // 
+            // cb_createSpringController
+            // 
+            this.cb_createSpringController.AutoSize = true;
+            this.cb_createSpringController.Location = new System.Drawing.Point(3, 3);
+            this.cb_createSpringController.Name = "cb_createSpringController";
+            this.cb_createSpringController.Size = new System.Drawing.Size(138, 16);
+            this.cb_createSpringController.TabIndex = 17;
+            this.cb_createSpringController.Text = "生成对应Controlelr ";
+            this.cb_createSpringController.UseVisualStyleBackColor = true;
+            this.cb_createSpringController.Visible = false;
+            // 
+            // cb_createSpringService
+            // 
+            this.cb_createSpringService.AutoSize = true;
+            this.cb_createSpringService.Location = new System.Drawing.Point(147, 3);
+            this.cb_createSpringService.Name = "cb_createSpringService";
+            this.cb_createSpringService.Size = new System.Drawing.Size(120, 16);
+            this.cb_createSpringService.TabIndex = 17;
+            this.cb_createSpringService.Text = "生成对应Service ";
+            this.cb_createSpringService.UseVisualStyleBackColor = true;
+            this.cb_createSpringService.Visible = false;
+            // 
+            // cb_createSpringMapper
+            // 
+            this.cb_createSpringMapper.AutoSize = true;
+            this.cb_createSpringMapper.Location = new System.Drawing.Point(273, 3);
+            this.cb_createSpringMapper.Name = "cb_createSpringMapper";
+            this.cb_createSpringMapper.Size = new System.Drawing.Size(114, 16);
+            this.cb_createSpringMapper.TabIndex = 17;
+            this.cb_createSpringMapper.Text = "生成对应Mapper ";
+            this.cb_createSpringMapper.UseVisualStyleBackColor = true;
+            this.cb_createSpringMapper.Visible = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringController);
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringService);
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringMapper);
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringMapperResource);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 443);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(575, 24);
+            this.flowLayoutPanel1.TabIndex = 18;
+            // 
+            // cb_createSpringMapperResource
+            // 
+            this.cb_createSpringMapperResource.AutoSize = true;
+            this.cb_createSpringMapperResource.Location = new System.Drawing.Point(393, 3);
+            this.cb_createSpringMapperResource.Name = "cb_createSpringMapperResource";
+            this.cb_createSpringMapperResource.Size = new System.Drawing.Size(156, 16);
+            this.cb_createSpringMapperResource.TabIndex = 17;
+            this.cb_createSpringMapperResource.Text = "生成Resources下Mapper ";
+            this.cb_createSpringMapperResource.UseVisualStyleBackColor = true;
+            this.cb_createSpringMapperResource.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -736,6 +798,8 @@
             this.tp_springFileCreator.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -794,6 +858,11 @@
         private System.Windows.Forms.TextBox tb_springFileAuthor;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.CheckBox cb_createSpringController;
+        private System.Windows.Forms.CheckBox cb_createSpringService;
+        private System.Windows.Forms.CheckBox cb_createSpringMapper;
+        private System.Windows.Forms.CheckBox cb_createSpringMapperResource;
     }
 }
 

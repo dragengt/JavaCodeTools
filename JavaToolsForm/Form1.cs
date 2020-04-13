@@ -280,7 +280,58 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             {
                 tb_springFileToProc.AppendText(data.ToString());
                 tb_springFileToProc.AppendText("\n");
+            }
 
+            //重新分析当前选中的文件类型，并推断需要生成的文件：
+            List<string> fileList;
+            string errorMsg;
+            var type = AnalyzeType(out fileList, out errorMsg);
+            if (type == JavaSpringBootFileCreator.SBFileType.NULL || errorMsg.Length > 0)
+            {
+                MessageBox.Show(errorMsg);
+                return;
+            }
+
+            switch(type)
+            {
+                case JavaSpringBootFileCreator.SBFileType.Controller:
+                    ShowCheckBox(false, cb_createSpringController, cb_createSpringMapperResource);
+                    CheckCheckBox(false, cb_createSpringController, cb_createSpringMapperResource);
+
+                    ShowCheckBox(true, cb_createSpringService, cb_createSpringMapper);
+                    CheckCheckBox(true,cb_createSpringService, cb_createSpringMapper);
+                    break;
+
+                case JavaSpringBootFileCreator.SBFileType.Service:
+                    ShowCheckBox(false, cb_createSpringService, cb_createSpringMapperResource);
+                    CheckCheckBox(false, cb_createSpringService, cb_createSpringMapperResource);
+
+                    ShowCheckBox(true, cb_createSpringController, cb_createSpringMapper);
+                    CheckCheckBox(true, cb_createSpringController, cb_createSpringMapper);
+                    break;
+
+                case JavaSpringBootFileCreator.SBFileType.Mapper:
+                    ShowCheckBox(false, cb_createSpringMapper, cb_createSpringMapperResource);
+                    CheckCheckBox(false, cb_createSpringMapper, cb_createSpringMapperResource);
+
+                    ShowCheckBox(true, cb_createSpringController, cb_createSpringService);
+                    CheckCheckBox(true, cb_createSpringController, cb_createSpringService);
+                    break;
+            }
+        }
+
+        private void ShowCheckBox( bool isOn,params CheckBox[] cbs)
+        {
+            foreach(var cb in cbs)
+            {
+                cb.Visible = isOn;
+            }
+        }
+        private void CheckCheckBox(bool isOn, params CheckBox[] cbs)
+        {
+            foreach (var cb in cbs)
+            {
+                cb.Checked = isOn;
             }
         }
 
@@ -323,21 +374,14 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
             UIUtil.TryAction(() =>
             {
+                //设定作者名称
                 JavaSpringBootFileCreator.g_javaAuthorName = tb_springFileAuthor.Text;
 
-                var fileNames = tb_springFileToProc.Text.Split('\n');
-                //去掉空行内容：
-                var fileNamesTrimed = CommonUtil.TrimEmptyLines(fileNames);
-
-                var subFileTypes = new JavaSpringBootFileCreator.SBFileType[]{
-                    JavaSpringBootFileCreator.SBFileType.Service,
-                    JavaSpringBootFileCreator.SBFileType.Mapper,
-                };
-
+                List<string> fileNamesTrimed;
                 StringBuilder sbSucMsg = new StringBuilder();
-
                 string errorMsg;
-                var type = JavaSpringBootFileCreator.AnalyzeFiles(fileNamesTrimed, out errorMsg);
+
+                var type = AnalyzeType(out fileNamesTrimed, out errorMsg);
                 if (type == JavaSpringBootFileCreator.SBFileType.NULL || errorMsg.Length > 0)
                 {
                     MessageBox.Show(errorMsg.ToString());
@@ -345,6 +389,7 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
                 }
                 else
                 {
+                    var subFileTypes = GuessSubTypesFor(type);
                     foreach (var file in fileNamesTrimed)
                     {
                         foreach (var tarFileType in subFileTypes)
@@ -362,6 +407,51 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             });
         }
 
+        private JavaSpringBootFileCreator.SBFileType AnalyzeType(out List<string> fileNamesTrimed, out string errorMsg)
+        {
+            var fileNames = tb_springFileToProc.Text.Split('\n');
+            //去掉空行内容：
+            fileNamesTrimed = CommonUtil.TrimEmptyLines(fileNames);
+
+            var type = JavaSpringBootFileCreator.AnalyzeFiles(fileNamesTrimed, out errorMsg);
+            return type;
+        }
+
+        /// <summary>
+        /// 推断需要生成的文件类
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        private JavaSpringBootFileCreator.SBFileType[] GuessSubTypesFor(JavaSpringBootFileCreator.SBFileType type)
+        {
+            if (type == JavaSpringBootFileCreator.SBFileType.Controller)
+            {
+                return new JavaSpringBootFileCreator.SBFileType[]{
+                    JavaSpringBootFileCreator.SBFileType.Service,
+                    JavaSpringBootFileCreator.SBFileType.Mapper,
+                };
+            }
+            else if (type == JavaSpringBootFileCreator.SBFileType.Service)
+            {
+                return new JavaSpringBootFileCreator.SBFileType[]
+                {
+                     JavaSpringBootFileCreator.SBFileType.Controller,
+                     JavaSpringBootFileCreator.SBFileType.Mapper,
+                };
+            }
+            else if (type == JavaSpringBootFileCreator.SBFileType.Mapper)
+            {
+                return new JavaSpringBootFileCreator.SBFileType[]
+                {
+                    JavaSpringBootFileCreator.SBFileType.ResourceMapper,
+                };
+            }
+            else
+            {
+                throw new Exception("暂时不支持" + type + " 类型的代码文件生成~");
+            }
+        }
+
         private void cb_alwaysTopWindow_CheckedChanged(object sender, EventArgs e)
         {
             //是否窗体最前设置：
@@ -372,6 +462,5 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
         {
             this.TopMost = cb_alwaysTopWindow.Checked;
         }
-
     }
 }
