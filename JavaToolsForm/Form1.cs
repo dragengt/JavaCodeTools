@@ -27,8 +27,8 @@ namespace JavaToolsForm
             //暂时不显示批量处理，暂时有问题
             tbInvisible = tab_springFileCreate.TabPages[2];
             tab_springFileCreate.TabPages.RemoveAt(2);
-            tb_author. KeyDown += Form1_KeyDown;
-            
+            tb_author.KeyDown += Form1_KeyDown;
+
             //Config 监听以下控件变动
             ConfigUtil.ListenControl(tb_getsetProjPath);            //批量生成get/set的目录
             ConfigUtil.ListenControl(tb_author);                            //作者字段
@@ -37,7 +37,7 @@ namespace JavaToolsForm
             ConfigUtil.ListenControl(tb_unitTestAuthor);         //单元测试的注释作者字段
             ConfigUtil.ListenControl(cb_alwaysTopWindow);  //是否总在最前
 
-            this.FormClosing += (se,eArg) =>  AppCommon.Util.ConfigUtil.SaveConfig();
+            this.FormClosing += (se, eArg) => AppCommon.Util.ConfigUtil.SaveConfig();
 
             //支持文件拖拽到文本框：
             tb_springFileToProc.DragEnter += Tb_springFileToProc_DragEnter;
@@ -47,7 +47,7 @@ namespace JavaToolsForm
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Alt && e.KeyCode== Keys.C&&tb_author.Text=="曾昭亮/80231356")
+            if (e.Alt && e.KeyCode == Keys.C && tb_author.Text == "曾昭亮/80231356")
             {
                 tab_springFileCreate.TabPages.Add(tbInvisible);
             }
@@ -94,7 +94,7 @@ namespace JavaToolsForm
 
         //强制转换规范
         private void btn_processForceFix_Click(object sender, EventArgs e)
-        { 
+        {
             var scanPath = tb_forceFixProj.Text;
             if (string.IsNullOrEmpty(scanPath))
             {
@@ -109,11 +109,11 @@ namespace JavaToolsForm
                 ShowReport(processedList, unableList);
             });
         }
-       
+
         //转换get/set 代码段
         private void btn_convertSnippet_Click(object sender, EventArgs e)
         {
-            if( string.IsNullOrEmpty(rtb_srcCodeSnippet.Text))
+            if (string.IsNullOrEmpty(rtb_srcCodeSnippet.Text))
             {
                 MessageBox.Show("没啥代码可转换的。");
                 return;
@@ -162,16 +162,16 @@ namespace JavaToolsForm
             var wantedFiles = rtb_j2cSrc.Text.Split('\n');
             AppCommon.Util.CommonUtil.ScanFiles("D:/安全桌面专用目录/Document文档/客户评级（201806）/201912人行征信对接预研/entity", (filename) =>
             {
-             
-                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
-                    if (wantedFiles.Contains(fileNameWithoutExtension))
-                    {
-                        File.Copy(filename, "D:/安全桌面专用目录/Document文档/客户评级（201806）/201912人行征信对接预研/entity/picked/" + fileNameWithoutExtension + ".java");
-                        return true;
-                    }
-                    return false;
 
-             
+                string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
+                if (wantedFiles.Contains(fileNameWithoutExtension))
+                {
+                    File.Copy(filename, "D:/安全桌面专用目录/Document文档/客户评级（201806）/201912人行征信对接预研/entity/picked/" + fileNameWithoutExtension + ".java");
+                    return true;
+                }
+                return false;
+
+
             });
 
         }
@@ -190,7 +190,7 @@ namespace JavaToolsForm
         {
             tb_forceFixProj.Text = SelectFolder();
         }
-         
+
         private void btn_selectProjPath_Click(object sender, EventArgs e)
         {
             tb_getsetProjPath.Text = SelectFolder();
@@ -280,7 +280,7 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             {
                 tb_springFileToProc.AppendText(data.ToString());
                 tb_springFileToProc.AppendText("\n");
-                
+
             }
         }
 
@@ -307,7 +307,8 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
 
             //范例：
             //F:\java\workspace\LU14_RiskView_Svc\LU14_RiskView_Svc\src\main\java\com\cmb\cvm\biznotify\mapper\health\HealthMapper.java
-            UIUtil.TryAction(() => {
+            UIUtil.TryAction(() =>
+            {
 
             });
         }
@@ -322,21 +323,41 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
             UIUtil.TryAction(() =>
             {
+                JavaSpringBootFileCreator.g_javaAuthorName = tb_springFileAuthor.Text;
+
                 var fileNames = tb_springFileToProc.Text.Split('\n');
                 //去掉空行内容：
                 var fileNamesTrimed = CommonUtil.TrimEmptyLines(fileNames);
 
+                var subFileTypes = new JavaSpringBootFileCreator.SBFileType[]{
+                    JavaSpringBootFileCreator.SBFileType.Service,
+                    JavaSpringBootFileCreator.SBFileType.Mapper,
+                };
+
+                StringBuilder sbSucMsg = new StringBuilder();
+
                 string errorMsg;
-                var type= JavaSpringBootFileCreator.AnalyzeFiles(fileNamesTrimed, out errorMsg);
+                var type = JavaSpringBootFileCreator.AnalyzeFiles(fileNamesTrimed, out errorMsg);
                 if (type == JavaSpringBootFileCreator.SBFileType.NULL || errorMsg.Length > 0)
                 {
                     MessageBox.Show(errorMsg.ToString());
-                }else
+                    return;
+                }
+                else
                 {
-                    foreach(var file in fileNamesTrimed)
+                    foreach (var file in fileNamesTrimed)
                     {
-                        JavaSpringBootFileCreator.CreateFileFor(file,type, JavaSpringBootFileCreator.SBFileType.Service);
+                        foreach (var tarFileType in subFileTypes)
+                        {
+                            if (JavaSpringBootFileCreator.CreateFileFor(file, type, tarFileType))
+                            {
+                                sbSucMsg.AppendLine(file + "处理完成：" + tarFileType);
+                            }
+                        }
+
                     }
+
+                    ReportFormUtil.ShowReport(sbSucMsg.ToString());
                 }
             });
         }
