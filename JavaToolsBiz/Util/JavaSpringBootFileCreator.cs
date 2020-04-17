@@ -207,7 +207,8 @@ namespace JavaToolsBiz.Util
             //文件内容填充：
             StringBuilder sbFileContent = FillFileContentFor(srcFileName,srcFileType, tarFileName, tarFileType);
 
-            File.WriteAllText(tarFileName, sbFileContent.ToString(), Encoding.UTF8);
+            //指定要utf-8 with no BOM编码
+            File.WriteAllText(tarFileName, sbFileContent.ToString(), new UTF8Encoding(false));
 
             return true;
         }
