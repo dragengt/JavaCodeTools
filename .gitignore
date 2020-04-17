@@ -9,3 +9,5 @@ Release/
 *.nupkg
 packages/
 .vs/
+*.rar
+*.zip
