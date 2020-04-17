@@ -36,12 +36,14 @@ namespace JavaToolsForm
             ConfigUtil.ListenControl(tb_forceFixProj);               // 
             ConfigUtil.ListenControl(tb_unitTestAuthor);         //单元测试的注释作者字段
             ConfigUtil.ListenControl(cb_alwaysTopWindow);  //是否总在最前
+            ConfigUtil.ListenControl(tb_springFileAuthor);
 
             this.FormClosing += (se, eArg) => AppCommon.Util.ConfigUtil.SaveConfig();
 
             //支持文件拖拽到文本框：
             tb_springFileToProc.DragEnter += Tb_springFileToProc_DragEnter;
             tb_springFileToProc.DragDrop += Tb_springFileToProc_DragDrop;
+             
         }
 
 
@@ -292,14 +294,14 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
                 return;
             }
 
-            switch(type)
+            switch (type)
             {
                 case JavaSpringBootFileCreator.SBFileType.Controller:
                     ShowCheckBox(false, cb_createSpringController, cb_createSpringMapperResource);
                     CheckCheckBox(false, cb_createSpringController, cb_createSpringMapperResource);
 
                     ShowCheckBox(true, cb_createSpringService, cb_createSpringMapper);
-                    CheckCheckBox(true,cb_createSpringService, cb_createSpringMapper);
+                    CheckCheckBox(true, cb_createSpringService, cb_createSpringMapper);
                     break;
 
                 case JavaSpringBootFileCreator.SBFileType.Service:
@@ -320,9 +322,9 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             }
         }
 
-        private void ShowCheckBox( bool isOn,params CheckBox[] cbs)
+        private void ShowCheckBox(bool isOn, params CheckBox[] cbs)
         {
-            foreach(var cb in cbs)
+            foreach (var cb in cbs)
             {
                 cb.Visible = isOn;
             }
@@ -389,7 +391,7 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
                 }
                 else
                 {
-                    var subFileTypes = GuessSubTypesFor(type);
+                    var subFileTypes = GetCreateSpringSubTypes(); //获得勾选了哪些需要生成的内容
                     foreach (var file in fileNamesTrimed)
                     {
                         foreach (var tarFileType in subFileTypes)
@@ -418,39 +420,31 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
         }
 
         /// <summary>
-        /// 推断需要生成的文件类
+        /// 获得勾选的生成文件类型内容
         /// </summary>
-        /// <param name="type"></param>
         /// <returns></returns>
-        private JavaSpringBootFileCreator.SBFileType[] GuessSubTypesFor(JavaSpringBootFileCreator.SBFileType type)
+        private List<JavaSpringBootFileCreator.SBFileType> GetCreateSpringSubTypes()
         {
-            if (type == JavaSpringBootFileCreator.SBFileType.Controller)
+            List<JavaSpringBootFileCreator.SBFileType> subTypes = new List<JavaSpringBootFileCreator.SBFileType>();
+            if (cb_createSpringController.Checked)
             {
-                return new JavaSpringBootFileCreator.SBFileType[]{
-                    JavaSpringBootFileCreator.SBFileType.Service,
-                    JavaSpringBootFileCreator.SBFileType.Mapper,
-                };
+                subTypes.Add(JavaSpringBootFileCreator.SBFileType.Controller);
             }
-            else if (type == JavaSpringBootFileCreator.SBFileType.Service)
+            else if (cb_createSpringService.Checked)
             {
-                return new JavaSpringBootFileCreator.SBFileType[]
-                {
-                     JavaSpringBootFileCreator.SBFileType.Controller,
-                     JavaSpringBootFileCreator.SBFileType.Mapper,
-                };
+                subTypes.Add(JavaSpringBootFileCreator.SBFileType.Service);
             }
-            else if (type == JavaSpringBootFileCreator.SBFileType.Mapper)
+            else if (cb_createSpringMapper.Checked)
             {
-                return new JavaSpringBootFileCreator.SBFileType[]
-                {
-                    JavaSpringBootFileCreator.SBFileType.ResourceMapper,
-                };
+                subTypes.Add(JavaSpringBootFileCreator.SBFileType.Mapper);
             }
-            else
+            else if (cb_createSpringMapperResource.Checked)
             {
-                throw new Exception("暂时不支持" + type + " 类型的代码文件生成~");
+                subTypes.Add(JavaSpringBootFileCreator.SBFileType.ResourceMapper);
             }
-        }
+
+            return subTypes; 
+        } 
 
         private void cb_alwaysTopWindow_CheckedChanged(object sender, EventArgs e)
         {

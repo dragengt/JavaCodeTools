@@ -368,6 +368,8 @@ namespace JavaToolsBiz.Util
             int reqPathRegexIndex = (int)tarFileType;
 
             string reqPath = Regex.Replace(tarFileName, C_RegexFilePathToMatch[reqPathRegexIndex], C_RegexReqMapPathToReplace[reqPathRegexIndex]);
+            //controller路径中可能还是会有“\\"的格式，将之替换为"/"
+            reqPath = reqPath.Replace("\\", "/");
 
             return reqPath;
         }

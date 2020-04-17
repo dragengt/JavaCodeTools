@@ -65,6 +65,9 @@
     <None Include="JavaTools_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="JavaCodeTemplate\ControllerFuncsTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="JavaCodeTemplate\ControllerTemplate.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

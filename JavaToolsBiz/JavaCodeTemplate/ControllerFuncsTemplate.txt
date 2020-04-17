@@ -1,0 +1,12 @@
+﻿	 /**
+	 * TODO 请填写注释
+	 * @return
+	 * @author 曾昭亮/80231356
+	 * @createdate 2020年4月14日
+	 */
+	@ApiOperation(value = "健康检测", notes = "通过查询db数据库来判断连通性")
+	@GetMapping(value = "/health")
+	public ResultBody<Integer> health(@RequestBody xxxCond)
+	{
+		return handRequest(healthMapper::checkDbHealth);
+	}

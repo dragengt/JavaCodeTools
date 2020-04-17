@@ -30,6 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tab_springFileCreate = new System.Windows.Forms.TabControl();
+            this.tp_springFileCreator = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cb_createSpringController = new System.Windows.Forms.CheckBox();
+            this.cb_createSpringService = new System.Windows.Forms.CheckBox();
+            this.cb_createSpringMapper = new System.Windows.Forms.CheckBox();
+            this.cb_createSpringMapperResource = new System.Windows.Forms.CheckBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tb_springFileAuthor = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.tb_createSpringBootFile = new System.Windows.Forms.Button();
+            this.tb_springFileToProc = new System.Windows.Forms.TextBox();
             this.tp_GetSetProcess = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cb_genSwaggerComment = new System.Windows.Forms.CheckBox();
@@ -71,22 +84,11 @@
             this.tb_unitTestAuthor = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tp_springFileCreator = new System.Windows.Forms.TabPage();
-            this.tb_createSpringBootFile = new System.Windows.Forms.Button();
-            this.tb_springFileToProc = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tp_settingPage = new System.Windows.Forms.TabPage();
             this.cb_alwaysTopWindow = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tb_springFileAuthor = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cb_createSpringController = new System.Windows.Forms.CheckBox();
-            this.cb_createSpringService = new System.Windows.Forms.CheckBox();
-            this.cb_createSpringMapper = new System.Windows.Forms.CheckBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cb_createSpringMapperResource = new System.Windows.Forms.CheckBox();
             this.tab_springFileCreate.SuspendLayout();
+            this.tp_springFileCreator.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.tp_GetSetProcess.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -105,9 +107,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
-            this.tp_springFileCreator.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.tp_settingPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_springFileCreate
@@ -119,13 +119,157 @@
             this.tab_springFileCreate.Controls.Add(this.tp_codeFixBatch);
             this.tab_springFileCreate.Controls.Add(this.tp_java2Cs);
             this.tab_springFileCreate.Controls.Add(this.tp_unitTestGenerator);
-            this.tab_springFileCreate.Controls.Add(this.tabPage2);
+            this.tab_springFileCreate.Controls.Add(this.tp_settingPage);
             this.tab_springFileCreate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tab_springFileCreate.Location = new System.Drawing.Point(0, 0);
             this.tab_springFileCreate.Name = "tab_springFileCreate";
             this.tab_springFileCreate.SelectedIndex = 0;
-            this.tab_springFileCreate.Size = new System.Drawing.Size(599, 571);
+            this.tab_springFileCreate.Size = new System.Drawing.Size(678, 571);
             this.tab_springFileCreate.TabIndex = 0;
+            // 
+            // tp_springFileCreator
+            // 
+            this.tp_springFileCreator.Controls.Add(this.flowLayoutPanel1);
+            this.tp_springFileCreator.Controls.Add(this.label11);
+            this.tp_springFileCreator.Controls.Add(this.label9);
+            this.tp_springFileCreator.Controls.Add(this.tb_springFileAuthor);
+            this.tp_springFileCreator.Controls.Add(this.label10);
+            this.tp_springFileCreator.Controls.Add(this.label8);
+            this.tp_springFileCreator.Controls.Add(this.tb_createSpringBootFile);
+            this.tp_springFileCreator.Controls.Add(this.tb_springFileToProc);
+            this.tp_springFileCreator.Location = new System.Drawing.Point(4, 22);
+            this.tp_springFileCreator.Name = "tp_springFileCreator";
+            this.tp_springFileCreator.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_springFileCreator.Size = new System.Drawing.Size(670, 545);
+            this.tp_springFileCreator.TabIndex = 6;
+            this.tp_springFileCreator.Text = "文件自动生成";
+            this.tp_springFileCreator.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringController);
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringService);
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringMapper);
+            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringMapperResource);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 443);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(575, 24);
+            this.flowLayoutPanel1.TabIndex = 18;
+            // 
+            // cb_createSpringController
+            // 
+            this.cb_createSpringController.AutoSize = true;
+            this.cb_createSpringController.Location = new System.Drawing.Point(3, 3);
+            this.cb_createSpringController.Name = "cb_createSpringController";
+            this.cb_createSpringController.Size = new System.Drawing.Size(138, 16);
+            this.cb_createSpringController.TabIndex = 17;
+            this.cb_createSpringController.Text = "生成对应Controlelr ";
+            this.cb_createSpringController.UseVisualStyleBackColor = true;
+            this.cb_createSpringController.Visible = false;
+            // 
+            // cb_createSpringService
+            // 
+            this.cb_createSpringService.AutoSize = true;
+            this.cb_createSpringService.Location = new System.Drawing.Point(147, 3);
+            this.cb_createSpringService.Name = "cb_createSpringService";
+            this.cb_createSpringService.Size = new System.Drawing.Size(120, 16);
+            this.cb_createSpringService.TabIndex = 17;
+            this.cb_createSpringService.Text = "生成对应Service ";
+            this.cb_createSpringService.UseVisualStyleBackColor = true;
+            this.cb_createSpringService.Visible = false;
+            // 
+            // cb_createSpringMapper
+            // 
+            this.cb_createSpringMapper.AutoSize = true;
+            this.cb_createSpringMapper.Location = new System.Drawing.Point(273, 3);
+            this.cb_createSpringMapper.Name = "cb_createSpringMapper";
+            this.cb_createSpringMapper.Size = new System.Drawing.Size(114, 16);
+            this.cb_createSpringMapper.TabIndex = 17;
+            this.cb_createSpringMapper.Text = "生成对应Mapper ";
+            this.cb_createSpringMapper.UseVisualStyleBackColor = true;
+            this.cb_createSpringMapper.Visible = false;
+            // 
+            // cb_createSpringMapperResource
+            // 
+            this.cb_createSpringMapperResource.AutoSize = true;
+            this.cb_createSpringMapperResource.Location = new System.Drawing.Point(393, 3);
+            this.cb_createSpringMapperResource.Name = "cb_createSpringMapperResource";
+            this.cb_createSpringMapperResource.Size = new System.Drawing.Size(156, 16);
+            this.cb_createSpringMapperResource.TabIndex = 17;
+            this.cb_createSpringMapperResource.Text = "生成Resources下Mapper ";
+            this.cb_createSpringMapperResource.UseVisualStyleBackColor = true;
+            this.cb_createSpringMapperResource.Visible = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 11);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(263, 12);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "1、将文件拖拽到下面文本框中，以获得文件路径";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(143, 12);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "生成文件的@author字段名";
+            // 
+            // tb_springFileAuthor
+            // 
+            this.tb_springFileAuthor.Location = new System.Drawing.Point(157, 80);
+            this.tb_springFileAuthor.Name = "tb_springFileAuthor";
+            this.tb_springFileAuthor.Size = new System.Drawing.Size(100, 21);
+            this.tb_springFileAuthor.TabIndex = 15;
+            this.tb_springFileAuthor.Text = "曾昭亮/80231356";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 528);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(551, 12);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "*:文件生成会覆盖对应Service/Mapper文件夹，所以操作最好在git托管的项目下进行，以查看变动情况";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(26, 32);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(473, 36);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "1）如果是Controller的Java文件，则可生成对应的Service和Mapper的java文件\r\n2）待完成：如果是Service的Java文件，则可生成" +
+    "对应的Mapper和Controller的java文件\r\n3）未完成：如果是Mapper的Java文件，则可生成Mapper的xml文件";
+            // 
+            // tb_createSpringBootFile
+            // 
+            this.tb_createSpringBootFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_createSpringBootFile.Location = new System.Drawing.Point(8, 473);
+            this.tb_createSpringBootFile.Name = "tb_createSpringBootFile";
+            this.tb_createSpringBootFile.Size = new System.Drawing.Size(654, 52);
+            this.tb_createSpringBootFile.TabIndex = 1;
+            this.tb_createSpringBootFile.Text = "生成Java文件";
+            this.tb_createSpringBootFile.UseVisualStyleBackColor = true;
+            this.tb_createSpringBootFile.Click += new System.EventHandler(this.tb_createSpringBootFile_Click);
+            // 
+            // tb_springFileToProc
+            // 
+            this.tb_springFileToProc.AllowDrop = true;
+            this.tb_springFileToProc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_springFileToProc.Location = new System.Drawing.Point(8, 107);
+            this.tb_springFileToProc.Multiline = true;
+            this.tb_springFileToProc.Name = "tb_springFileToProc";
+            this.tb_springFileToProc.Size = new System.Drawing.Size(654, 330);
+            this.tb_springFileToProc.TabIndex = 0;
             // 
             // tp_GetSetProcess
             // 
@@ -139,13 +283,14 @@
             this.tp_GetSetProcess.Location = new System.Drawing.Point(4, 22);
             this.tp_GetSetProcess.Name = "tp_GetSetProcess";
             this.tp_GetSetProcess.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_GetSetProcess.Size = new System.Drawing.Size(591, 545);
+            this.tp_GetSetProcess.Size = new System.Drawing.Size(670, 545);
             this.tp_GetSetProcess.TabIndex = 0;
             this.tp_GetSetProcess.Text = "Getter/Setter处理";
             this.tp_GetSetProcess.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(8, 449);
             this.label7.Name = "label7";
@@ -167,7 +312,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 21);
+            this.label2.Location = new System.Drawing.Point(470, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 12);
             this.label2.TabIndex = 11;
@@ -176,7 +321,7 @@
             // tb_author
             // 
             this.tb_author.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_author.Location = new System.Drawing.Point(483, 18);
+            this.tb_author.Location = new System.Drawing.Point(562, 18);
             this.tb_author.Name = "tb_author";
             this.tb_author.Size = new System.Drawing.Size(100, 21);
             this.tb_author.TabIndex = 10;
@@ -198,8 +343,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.rtb_tarCodeSnippet);
-            this.splitContainer1.Size = new System.Drawing.Size(575, 390);
-            this.splitContainer1.SplitterDistance = 287;
+            this.splitContainer1.Size = new System.Drawing.Size(654, 390);
+            this.splitContainer1.SplitterDistance = 326;
             this.splitContainer1.TabIndex = 9;
             // 
             // rtb_srcCodeSnippet
@@ -207,7 +352,7 @@
             this.rtb_srcCodeSnippet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_srcCodeSnippet.Location = new System.Drawing.Point(0, 0);
             this.rtb_srcCodeSnippet.Name = "rtb_srcCodeSnippet";
-            this.rtb_srcCodeSnippet.Size = new System.Drawing.Size(287, 390);
+            this.rtb_srcCodeSnippet.Size = new System.Drawing.Size(326, 390);
             this.rtb_srcCodeSnippet.TabIndex = 6;
             this.rtb_srcCodeSnippet.Text = "";
             // 
@@ -216,7 +361,7 @@
             this.rtb_tarCodeSnippet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtb_tarCodeSnippet.Location = new System.Drawing.Point(0, 0);
             this.rtb_tarCodeSnippet.Name = "rtb_tarCodeSnippet";
-            this.rtb_tarCodeSnippet.Size = new System.Drawing.Size(284, 390);
+            this.rtb_tarCodeSnippet.Size = new System.Drawing.Size(324, 390);
             this.rtb_tarCodeSnippet.TabIndex = 6;
             this.rtb_tarCodeSnippet.Text = "";
             // 
@@ -235,7 +380,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_convertSnippet.Location = new System.Drawing.Point(8, 507);
             this.btn_convertSnippet.Name = "btn_convertSnippet";
-            this.btn_convertSnippet.Size = new System.Drawing.Size(575, 35);
+            this.btn_convertSnippet.Size = new System.Drawing.Size(654, 35);
             this.btn_convertSnippet.TabIndex = 7;
             this.btn_convertSnippet.Text = "转换代码片段=>";
             this.btn_convertSnippet.UseVisualStyleBackColor = true;
@@ -249,7 +394,7 @@
             this.tp_getsetBatch.Location = new System.Drawing.Point(4, 22);
             this.tp_getsetBatch.Name = "tp_getsetBatch";
             this.tp_getsetBatch.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_getsetBatch.Size = new System.Drawing.Size(591, 545);
+            this.tp_getsetBatch.Size = new System.Drawing.Size(670, 545);
             this.tp_getsetBatch.TabIndex = 1;
             this.tp_getsetBatch.Text = "getset批量处理";
             this.tp_getsetBatch.UseVisualStyleBackColor = true;
@@ -260,7 +405,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_genGetAndSet.Location = new System.Drawing.Point(6, 38);
             this.btn_genGetAndSet.Name = "btn_genGetAndSet";
-            this.btn_genGetAndSet.Size = new System.Drawing.Size(577, 54);
+            this.btn_genGetAndSet.Size = new System.Drawing.Size(656, 54);
             this.btn_genGetAndSet.TabIndex = 8;
             this.btn_genGetAndSet.Text = "批量扫描文件生成getter/setter";
             this.btn_genGetAndSet.UseVisualStyleBackColor = true;
@@ -269,7 +414,7 @@
             // btn_selectGetSetProjPath
             // 
             this.btn_selectGetSetProjPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_selectGetSetProjPath.Location = new System.Drawing.Point(502, 10);
+            this.btn_selectGetSetProjPath.Location = new System.Drawing.Point(581, 10);
             this.btn_selectGetSetProjPath.Name = "btn_selectGetSetProjPath";
             this.btn_selectGetSetProjPath.Size = new System.Drawing.Size(81, 23);
             this.btn_selectGetSetProjPath.TabIndex = 7;
@@ -284,7 +429,7 @@
             this.tb_getsetProjPath.Location = new System.Drawing.Point(8, 10);
             this.tb_getsetProjPath.Multiline = true;
             this.tb_getsetProjPath.Name = "tb_getsetProjPath";
-            this.tb_getsetProjPath.Size = new System.Drawing.Size(488, 23);
+            this.tb_getsetProjPath.Size = new System.Drawing.Size(567, 23);
             this.tb_getsetProjPath.TabIndex = 6;
             // 
             // tp_ctorBatch
@@ -595,58 +740,16 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "处理设置：";
             // 
-            // tp_springFileCreator
+            // tp_settingPage
             // 
-            this.tp_springFileCreator.Controls.Add(this.flowLayoutPanel1);
-            this.tp_springFileCreator.Controls.Add(this.label11);
-            this.tp_springFileCreator.Controls.Add(this.label9);
-            this.tp_springFileCreator.Controls.Add(this.tb_springFileAuthor);
-            this.tp_springFileCreator.Controls.Add(this.label10);
-            this.tp_springFileCreator.Controls.Add(this.label8);
-            this.tp_springFileCreator.Controls.Add(this.tb_createSpringBootFile);
-            this.tp_springFileCreator.Controls.Add(this.tb_springFileToProc);
-            this.tp_springFileCreator.Location = new System.Drawing.Point(4, 22);
-            this.tp_springFileCreator.Name = "tp_springFileCreator";
-            this.tp_springFileCreator.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_springFileCreator.Size = new System.Drawing.Size(591, 545);
-            this.tp_springFileCreator.TabIndex = 6;
-            this.tp_springFileCreator.Text = "文件自动生成";
-            this.tp_springFileCreator.UseVisualStyleBackColor = true;
-            // 
-            // tb_createSpringBootFile
-            // 
-            this.tb_createSpringBootFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_createSpringBootFile.Location = new System.Drawing.Point(8, 473);
-            this.tb_createSpringBootFile.Name = "tb_createSpringBootFile";
-            this.tb_createSpringBootFile.Size = new System.Drawing.Size(575, 52);
-            this.tb_createSpringBootFile.TabIndex = 1;
-            this.tb_createSpringBootFile.Text = "生成Java文件";
-            this.tb_createSpringBootFile.UseVisualStyleBackColor = true;
-            this.tb_createSpringBootFile.Click += new System.EventHandler(this.tb_createSpringBootFile_Click);
-            // 
-            // tb_springFileToProc
-            // 
-            this.tb_springFileToProc.AllowDrop = true;
-            this.tb_springFileToProc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_springFileToProc.Location = new System.Drawing.Point(8, 107);
-            this.tb_springFileToProc.Multiline = true;
-            this.tb_springFileToProc.Name = "tb_springFileToProc";
-            this.tb_springFileToProc.Size = new System.Drawing.Size(575, 330);
-            this.tb_springFileToProc.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.cb_alwaysTopWindow);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(591, 545);
-            this.tabPage2.TabIndex = 7;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tp_settingPage.Controls.Add(this.cb_alwaysTopWindow);
+            this.tp_settingPage.Location = new System.Drawing.Point(4, 22);
+            this.tp_settingPage.Name = "tp_settingPage";
+            this.tp_settingPage.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_settingPage.Size = new System.Drawing.Size(591, 545);
+            this.tp_settingPage.TabIndex = 7;
+            this.tp_settingPage.Text = "设置";
+            this.tp_settingPage.UseVisualStyleBackColor = true;
             // 
             // cb_alwaysTopWindow
             // 
@@ -659,117 +762,20 @@
             this.cb_alwaysTopWindow.UseVisualStyleBackColor = true;
             this.cb_alwaysTopWindow.CheckedChanged += new System.EventHandler(this.cb_alwaysTopWindow_CheckedChanged);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(26, 32);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(473, 36);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "1）如果是Controller的Java文件，则可生成对应的Service和Mapper的java文件\r\n2）待完成：如果是Service的Java文件，则可生成" +
-    "对应的Mapper和Controller的java文件\r\n3）未完成：如果是Mapper的Java文件，则可生成Mapper的xml文件";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 83);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(143, 12);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "生成文件的@author字段名";
-            // 
-            // tb_springFileAuthor
-            // 
-            this.tb_springFileAuthor.Location = new System.Drawing.Point(157, 80);
-            this.tb_springFileAuthor.Name = "tb_springFileAuthor";
-            this.tb_springFileAuthor.Size = new System.Drawing.Size(100, 21);
-            this.tb_springFileAuthor.TabIndex = 15;
-            this.tb_springFileAuthor.Text = "曾昭亮/80231356";
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 528);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(551, 12);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "*:文件生成会覆盖对应Service/Mapper文件夹，所以操作最好在git托管的项目下进行，以查看变动情况";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(8, 11);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(263, 12);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "1、将文件拖拽到下面文本框中，以获得文件路径";
-            // 
-            // cb_createSpringController
-            // 
-            this.cb_createSpringController.AutoSize = true;
-            this.cb_createSpringController.Location = new System.Drawing.Point(3, 3);
-            this.cb_createSpringController.Name = "cb_createSpringController";
-            this.cb_createSpringController.Size = new System.Drawing.Size(138, 16);
-            this.cb_createSpringController.TabIndex = 17;
-            this.cb_createSpringController.Text = "生成对应Controlelr ";
-            this.cb_createSpringController.UseVisualStyleBackColor = true;
-            this.cb_createSpringController.Visible = false;
-            // 
-            // cb_createSpringService
-            // 
-            this.cb_createSpringService.AutoSize = true;
-            this.cb_createSpringService.Location = new System.Drawing.Point(147, 3);
-            this.cb_createSpringService.Name = "cb_createSpringService";
-            this.cb_createSpringService.Size = new System.Drawing.Size(120, 16);
-            this.cb_createSpringService.TabIndex = 17;
-            this.cb_createSpringService.Text = "生成对应Service ";
-            this.cb_createSpringService.UseVisualStyleBackColor = true;
-            this.cb_createSpringService.Visible = false;
-            // 
-            // cb_createSpringMapper
-            // 
-            this.cb_createSpringMapper.AutoSize = true;
-            this.cb_createSpringMapper.Location = new System.Drawing.Point(273, 3);
-            this.cb_createSpringMapper.Name = "cb_createSpringMapper";
-            this.cb_createSpringMapper.Size = new System.Drawing.Size(114, 16);
-            this.cb_createSpringMapper.TabIndex = 17;
-            this.cb_createSpringMapper.Text = "生成对应Mapper ";
-            this.cb_createSpringMapper.UseVisualStyleBackColor = true;
-            this.cb_createSpringMapper.Visible = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringController);
-            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringService);
-            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringMapper);
-            this.flowLayoutPanel1.Controls.Add(this.cb_createSpringMapperResource);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(8, 443);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(575, 24);
-            this.flowLayoutPanel1.TabIndex = 18;
-            // 
-            // cb_createSpringMapperResource
-            // 
-            this.cb_createSpringMapperResource.AutoSize = true;
-            this.cb_createSpringMapperResource.Location = new System.Drawing.Point(393, 3);
-            this.cb_createSpringMapperResource.Name = "cb_createSpringMapperResource";
-            this.cb_createSpringMapperResource.Size = new System.Drawing.Size(156, 16);
-            this.cb_createSpringMapperResource.TabIndex = 17;
-            this.cb_createSpringMapperResource.Text = "生成Resources下Mapper ";
-            this.cb_createSpringMapperResource.UseVisualStyleBackColor = true;
-            this.cb_createSpringMapperResource.Visible = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(599, 571);
+            this.ClientSize = new System.Drawing.Size(678, 571);
             this.Controls.Add(this.tab_springFileCreate);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tab_springFileCreate.ResumeLayout(false);
+            this.tp_springFileCreator.ResumeLayout(false);
+            this.tp_springFileCreator.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.tp_GetSetProcess.ResumeLayout(false);
             this.tp_GetSetProcess.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -794,12 +800,8 @@
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
-            this.tp_springFileCreator.ResumeLayout(false);
-            this.tp_springFileCreator.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.tp_settingPage.ResumeLayout(false);
+            this.tp_settingPage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -849,7 +851,7 @@
         private System.Windows.Forms.CheckBox cb_genSwaggerComment;
         private System.Windows.Forms.TabPage tp_springFileCreator;
         private System.Windows.Forms.TextBox tb_springFileToProc;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tp_settingPage;
         private System.Windows.Forms.CheckBox cb_alwaysTopWindow;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button tb_createSpringBootFile;

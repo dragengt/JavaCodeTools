@@ -23,9 +23,9 @@ import io.swagger.annotations.ApiOperation;
  */
 @Api(value = "TODO", tags = "TODO")
 @RestController
-@RequestMapping("/api/{REQ_MAP_PATH}")
+@RequestMapping("/api/${api-version}/{REQ_MAP_PATH}")
 public class {JAVA_FILE_NAME}
-{{ 
+{ 
     @Autowired
     private {MEM_TYPE} {MEM_NAME};
 
@@ -35,8 +35,8 @@ public class {JAVA_FILE_NAME}
 	 * 默认构造函数
 	 */
 	public {JAVA_FILE_NAME}()
-	{{
+	{
 		//默认无参构造方法，无操作。如有List等需要初始化，请追加
-	}}
+	}
 
-}}
+}
