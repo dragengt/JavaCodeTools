@@ -430,15 +430,15 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             {
                 subTypes.Add(JavaSpringBootFileCreator.SBFileType.Controller);
             }
-            else if (cb_createSpringService.Checked)
+            if (cb_createSpringService.Checked)
             {
                 subTypes.Add(JavaSpringBootFileCreator.SBFileType.Service);
             }
-            else if (cb_createSpringMapper.Checked)
+            if (cb_createSpringMapper.Checked)
             {
                 subTypes.Add(JavaSpringBootFileCreator.SBFileType.Mapper);
             }
-            else if (cb_createSpringMapperResource.Checked)
+            if (cb_createSpringMapperResource.Checked)
             {
                 subTypes.Add(JavaSpringBootFileCreator.SBFileType.ResourceMapper);
             }
