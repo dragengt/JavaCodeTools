@@ -24,21 +24,25 @@ namespace JavaToolsForm
         private TabPage tbInvisible;
         private void Form1_Load(object sender, EventArgs e)
         {
+            cb_pdm2JavaCodeType.Items.AddRange(Pdm2SqlGenerator.GetChangeTypesDesc());
+            cb_pdm2JavaCodeType.SelectedIndex = 0;
+
+
             //暂时不显示批量处理，暂时有问题
             tbInvisible = tab_springFileCreate.TabPages[2];
             tab_springFileCreate.TabPages.RemoveAt(2);
             tb_author.KeyDown += Form1_KeyDown;
 
             //Config 监听以下控件变动
-            ConfigUtil.ListenControl(tb_getsetProjPath);            //批量生成get/set的目录
-            ConfigUtil.ListenControl(tb_author);                            //作者字段
-            ConfigUtil.ListenControl(tb_ctorFolder);                    //用于批量处理构造方法目录
-            ConfigUtil.ListenControl(tb_forceFixProj);               // 
-            ConfigUtil.ListenControl(tb_unitTestAuthor);         //单元测试的注释作者字段
-            ConfigUtil.ListenControl(cb_alwaysTopWindow);  //是否总在最前
-            ConfigUtil.ListenControl(tb_springFileAuthor);
+            UIConfigUtil.ListenControl(tb_getsetProjPath);            //批量生成get/set的目录
+            UIConfigUtil.ListenControl(tb_author);                            //作者字段
+            UIConfigUtil.ListenControl(tb_ctorFolder);                    //用于批量处理构造方法目录
+            UIConfigUtil.ListenControl(tb_forceFixProj);               // 
+            UIConfigUtil.ListenControl(tb_unitTestAuthor);         //单元测试的注释作者字段
+            UIConfigUtil.ListenControl(cb_alwaysTopWindow);  //是否总在最前
+            UIConfigUtil.ListenControl(tb_springFileAuthor);
 
-            this.FormClosing += (se, eArg) => AppCommon.Util.ConfigUtil.SaveConfig();
+            this.FormClosing += (se, eArg) => AppCommon.Util.UIConfigUtil.SaveConfig();
 
             //支持文件拖拽到文本框：
             tb_springFileToProc.DragEnter += Tb_springFileToProc_DragEnter;
@@ -477,5 +481,23 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             this.TopMost = cb_alwaysTopWindow.Checked;
         }
 
+        private void btn_pdmConvertTo_Click(object sender, EventArgs e)
+        {
+            UIUtil.TryAction(() =>
+            {
+                //测试代码：生成config的代码
+                Pdm2SqlGenerator.TestSaveConfig();
+                JavaGetSetterGenerator.g_author = tb_author.Text;
+                
+                string convertedJavaFile = Pdm2SqlGenerator.ConvertPDMByType(cb_pdm2JavaCodeType.SelectedIndex, rtb_srcPdmDefineText.Text, cb_pdm2JavaCodeTrim_.Checked);
+                
+                if (!string.IsNullOrEmpty(convertedJavaFile))
+                {
+                    convertedJavaFile = JavaGetSetterGenerator.ConvertCodeWithGetSetter(convertedJavaFile, cb_genSwaggerComment.Checked);
+                }
+
+                rtb_pdmConvertedResult.Text = convertedJavaFile;
+            });
+        }
     }
 }

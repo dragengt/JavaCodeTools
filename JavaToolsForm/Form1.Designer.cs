@@ -87,6 +87,18 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tp_settingPage = new System.Windows.Forms.TabPage();
             this.cb_alwaysTopWindow = new System.Windows.Forms.CheckBox();
+            this.tp_pdmTool = new System.Windows.Forms.TabPage();
+            this.DbToolTabControll = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.rtb_srcPdmDefineText = new System.Windows.Forms.RichTextBox();
+            this.splitContainer5 = new System.Windows.Forms.SplitContainer();
+            this.rtb_pdmConvertedResult = new System.Windows.Forms.RichTextBox();
+            this.btn_pdmConvertTo = new System.Windows.Forms.Button();
+            this.cb_pdm2JavaCodeType = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cb_pdm2JavaCodeTrim_ = new System.Windows.Forms.CheckBox();
             this.tab_springFileCreate.SuspendLayout();
             this.tp_springFileCreator.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -109,6 +121,17 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.tp_settingPage.SuspendLayout();
+            this.tp_pdmTool.SuspendLayout();
+            this.DbToolTabControll.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
+            this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).BeginInit();
+            this.splitContainer5.Panel1.SuspendLayout();
+            this.splitContainer5.Panel2.SuspendLayout();
+            this.splitContainer5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab_springFileCreate
@@ -120,6 +143,7 @@
             this.tab_springFileCreate.Controls.Add(this.tp_codeFixBatch);
             this.tab_springFileCreate.Controls.Add(this.tp_java2Cs);
             this.tab_springFileCreate.Controls.Add(this.tp_unitTestGenerator);
+            this.tab_springFileCreate.Controls.Add(this.tp_pdmTool);
             this.tab_springFileCreate.Controls.Add(this.tp_settingPage);
             this.tab_springFileCreate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tab_springFileCreate.Location = new System.Drawing.Point(0, 0);
@@ -776,6 +800,147 @@
             this.cb_alwaysTopWindow.UseVisualStyleBackColor = true;
             this.cb_alwaysTopWindow.CheckedChanged += new System.EventHandler(this.cb_alwaysTopWindow_CheckedChanged);
             // 
+            // tp_pdmTool
+            // 
+            this.tp_pdmTool.Controls.Add(this.DbToolTabControll);
+            this.tp_pdmTool.Location = new System.Drawing.Point(4, 22);
+            this.tp_pdmTool.Name = "tp_pdmTool";
+            this.tp_pdmTool.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_pdmTool.Size = new System.Drawing.Size(656, 545);
+            this.tp_pdmTool.TabIndex = 8;
+            this.tp_pdmTool.Text = "数据工具";
+            this.tp_pdmTool.UseVisualStyleBackColor = true;
+            // 
+            // DbToolTabControll
+            // 
+            this.DbToolTabControll.Controls.Add(this.tabPage1);
+            this.DbToolTabControll.Controls.Add(this.tabPage2);
+            this.DbToolTabControll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DbToolTabControll.Location = new System.Drawing.Point(3, 3);
+            this.DbToolTabControll.Name = "DbToolTabControll";
+            this.DbToolTabControll.SelectedIndex = 0;
+            this.DbToolTabControll.Size = new System.Drawing.Size(650, 539);
+            this.DbToolTabControll.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.splitContainer4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(642, 513);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(642, 513);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.rtb_srcPdmDefineText);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.splitContainer5);
+            this.splitContainer4.Size = new System.Drawing.Size(636, 507);
+            this.splitContainer4.SplitterDistance = 318;
+            this.splitContainer4.TabIndex = 0;
+            // 
+            // rtb_srcPdmDefineText
+            // 
+            this.rtb_srcPdmDefineText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_srcPdmDefineText.Location = new System.Drawing.Point(0, 0);
+            this.rtb_srcPdmDefineText.Name = "rtb_srcPdmDefineText";
+            this.rtb_srcPdmDefineText.Size = new System.Drawing.Size(318, 507);
+            this.rtb_srcPdmDefineText.TabIndex = 0;
+            this.rtb_srcPdmDefineText.Text = "";
+            // 
+            // splitContainer5
+            // 
+            this.splitContainer5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer5.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer5.Name = "splitContainer5";
+            this.splitContainer5.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer5.Panel1
+            // 
+            this.splitContainer5.Panel1.Controls.Add(this.cb_pdm2JavaCodeTrim_);
+            this.splitContainer5.Panel1.Controls.Add(this.textBox1);
+            this.splitContainer5.Panel1.Controls.Add(this.cb_pdm2JavaCodeType);
+            this.splitContainer5.Panel1.Controls.Add(this.btn_pdmConvertTo);
+            // 
+            // splitContainer5.Panel2
+            // 
+            this.splitContainer5.Panel2.Controls.Add(this.rtb_pdmConvertedResult);
+            this.splitContainer5.Size = new System.Drawing.Size(314, 507);
+            this.splitContainer5.SplitterDistance = 120;
+            this.splitContainer5.TabIndex = 0;
+            // 
+            // rtb_pdmConvertedResult
+            // 
+            this.rtb_pdmConvertedResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtb_pdmConvertedResult.Location = new System.Drawing.Point(0, 0);
+            this.rtb_pdmConvertedResult.Name = "rtb_pdmConvertedResult";
+            this.rtb_pdmConvertedResult.Size = new System.Drawing.Size(314, 383);
+            this.rtb_pdmConvertedResult.TabIndex = 0;
+            this.rtb_pdmConvertedResult.Text = "";
+            // 
+            // btn_pdmConvertTo
+            // 
+            this.btn_pdmConvertTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_pdmConvertTo.Location = new System.Drawing.Point(239, 94);
+            this.btn_pdmConvertTo.Name = "btn_pdmConvertTo";
+            this.btn_pdmConvertTo.Size = new System.Drawing.Size(75, 23);
+            this.btn_pdmConvertTo.TabIndex = 0;
+            this.btn_pdmConvertTo.Text = "生成代码";
+            this.btn_pdmConvertTo.UseVisualStyleBackColor = true;
+            this.btn_pdmConvertTo.Click += new System.EventHandler(this.btn_pdmConvertTo_Click);
+            // 
+            // cb_pdm2JavaCodeType
+            // 
+            this.cb_pdm2JavaCodeType.FormattingEnabled = true;
+            this.cb_pdm2JavaCodeType.Location = new System.Drawing.Point(3, 68);
+            this.cb_pdm2JavaCodeType.Name = "cb_pdm2JavaCodeType";
+            this.cb_pdm2JavaCodeType.Size = new System.Drawing.Size(308, 20);
+            this.cb_pdm2JavaCodeType.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(308, 59);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "直接将整个pdm的行复制到左边\r\n点击转换即可获得对应代码\r\n生成getter/setter设置与【Getter/Setter处理】共享";
+            // 
+            // cb_pdm2JavaCodeTrim_
+            // 
+            this.cb_pdm2JavaCodeTrim_.AutoSize = true;
+            this.cb_pdm2JavaCodeTrim_.Location = new System.Drawing.Point(2, 98);
+            this.cb_pdm2JavaCodeTrim_.Name = "cb_pdm2JavaCodeTrim_";
+            this.cb_pdm2JavaCodeTrim_.Size = new System.Drawing.Size(186, 16);
+            this.cb_pdm2JavaCodeTrim_.TabIndex = 3;
+            this.cb_pdm2JavaCodeTrim_.Text = "去除下划线\"_\"并重定义大小写";
+            this.cb_pdm2JavaCodeTrim_.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -816,6 +981,18 @@
             this.splitContainer3.ResumeLayout(false);
             this.tp_settingPage.ResumeLayout(false);
             this.tp_settingPage.PerformLayout();
+            this.tp_pdmTool.ResumeLayout(false);
+            this.DbToolTabControll.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
+            this.splitContainer5.Panel1.ResumeLayout(false);
+            this.splitContainer5.Panel1.PerformLayout();
+            this.splitContainer5.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer5)).EndInit();
+            this.splitContainer5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -880,6 +1057,18 @@
         private System.Windows.Forms.CheckBox cb_createSpringMapper;
         private System.Windows.Forms.CheckBox cb_createSpringMapperResource;
         private System.Windows.Forms.Button btn_processStaticFile;
+        private System.Windows.Forms.TabPage tp_pdmTool;
+        private System.Windows.Forms.TabControl DbToolTabControll;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.RichTextBox rtb_srcPdmDefineText;
+        private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.RichTextBox rtb_pdmConvertedResult;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btn_pdmConvertTo;
+        private System.Windows.Forms.ComboBox cb_pdm2JavaCodeType;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cb_pdm2JavaCodeTrim_;
     }
 }
 
