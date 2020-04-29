@@ -65,7 +65,7 @@
     </Compile>
     <Compile Include="Util\AppException.cs" />
     <Compile Include="Util\CommonUtil.cs" />
-    <Compile Include="Util\ConfigUtil.cs" />
+    <Compile Include="Util\UIConfigUtil.cs" />
     <Compile Include="Util\ReportFormUtil.cs" />
     <Compile Include="Util\UIUtil.cs" />
   </ItemGroup>

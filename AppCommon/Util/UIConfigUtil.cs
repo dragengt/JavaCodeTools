@@ -11,13 +11,13 @@ namespace AppCommon.Util
     /// <summary>
     /// text相关控件/checkBox的Config设置和保存类
     /// </summary>
-    public  class ConfigUtil 
+    public  class UIConfigUtil 
     {
         [JsonIgnore]
-        private static ConfigUtil _instance;
+        private static UIConfigUtil _instance;
 
         [JsonIgnore]
-        private static ConfigUtil instance
+        private static UIConfigUtil instance
         {
             get
             {
@@ -66,11 +66,11 @@ namespace AppCommon.Util
         /// 读取配置内容
         /// </summary>
         /// <returns></returns>
-        private static ConfigUtil InitConfig()
+        private static UIConfigUtil InitConfig()
         {
-            ConfigUtil.controlList = new List<Control>();
+            UIConfigUtil.controlList = new List<Control>();
 
-            var config = new ConfigUtil();
+            var config = new UIConfigUtil();
 
             String filePath = GetConfigPath();
             if (File.Exists(filePath))
@@ -118,7 +118,7 @@ namespace AppCommon.Util
 
         private static string GetConfigPath()
         {
-            return Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "config.json");
+            return Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "uiConfig.json");
         }
 
     }
