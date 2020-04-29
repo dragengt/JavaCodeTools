@@ -94,6 +94,26 @@ namespace JavaToolsForm
             });
         }
 
+        private void btn_processStaticFile_Click(object sender, EventArgs e)
+        {
+
+            var scanPath = tb_ctorFolder.Text;
+            if (string.IsNullOrEmpty(scanPath))
+            {
+                MessageBox.Show("本地路径为空");
+                return;
+            }
+            List<string> processedList, unableList;
+
+            UIUtil.TryAction(() =>
+            {
+                JavaConstructorFixer.SetSkipAutowired(cb_skipAutowired.Checked);
+                JavaConstructorFixer.ProcessConstantsFolder(scanPath, out processedList, out unableList);
+
+                ShowReport(processedList, unableList);
+            });
+        }
+
         //强制转换规范
         private void btn_processForceFix_Click(object sender, EventArgs e)
         {
@@ -456,5 +476,6 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
         {
             this.TopMost = cb_alwaysTopWindow.Checked;
         }
+
     }
 }

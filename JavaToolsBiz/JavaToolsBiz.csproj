@@ -54,6 +54,7 @@
     <Compile Include="Util\JavaGetSetterGenerator.cs" />
     <Compile Include="Util\JavaSpringBootFileCreator.cs" />
     <Compile Include="Util\JavaUnitTestGenerator.cs" />
+    <Compile Include="Util\TokenSwallower.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AppCommon\AppCommon.csproj">

@@ -56,7 +56,7 @@ namespace JavaToolsBiz.Util
             List<string> errorRecorder = new List<string>();
             StringBuilder afterConvert;
             ProcessFileContent("", text, genSwaggerComment, errorRecorder, out afterConvert);
-
+             
             //有错误信息的情况下，则追加到afterConvert后
             if (errorRecorder.Count > 0)
             {
@@ -211,8 +211,11 @@ namespace JavaToolsBiz.Util
                     );
             }
 
-            //处理完成后，添加"}" 结束文件
-            codeBuilder.AppendLine("}");
+            if (!string.IsNullOrEmpty(currFile))
+            {
+                //处理完成后，添加"}" 结束文件
+                codeBuilder.AppendLine("}");
+            }
 
 
             //处理完成后的警告
@@ -222,11 +225,7 @@ namespace JavaToolsBiz.Util
             }
 
             fileContentStringBuilder = codeBuilder;
-
-            if (fileContentStringBuilder == null)
-            {
-                fileContentStringBuilder = new StringBuilder();
-            }
+             
             //处理OK
             return true;
         }
