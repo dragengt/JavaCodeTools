@@ -103,7 +103,7 @@ namespace JavaToolsBiz.Util
         /// <returns></returns>
         public static string TrimDB_CodeToCamel(string convertedJavaFile)
         {
-            return Regex.Replace(convertedJavaFile, @"(\W)([a-zA-Z]+_\w+)(\W)", (matched) =>
+            string result =  Regex.Replace(convertedJavaFile, @"(\W)([a-zA-Z]+_\w+)(\W)", (matched) =>
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append(matched.Groups[1]); //空格append
@@ -130,6 +130,24 @@ namespace JavaToolsBiz.Util
                 sb.Append(matched.Groups[3]);  //空格append
                 return sb.ToString();
             });
+
+            //对于private xxx字段,如果存在大写开头的，转为小写
+            string patternCapField= @"(private\s*[\w<,>]+\s*)([A-Z])(\w+)(\s*;)"; 
+            if (Regex.IsMatch(result, patternCapField))
+            {
+                result = Regex.Replace(result, patternCapField,(matched)=> {
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.Append(matched.Groups[1].Value);//第一块为字段前面内容，原样保持
+                    sb.Append(matched.Groups[2].Value.ToLower()); //第二块为字段开头字母，转小写
+                    sb.Append(matched.Groups[3].Value);//第三块为字段后续字母，按原样
+                    sb.Append(matched.Groups[4].Value);//第四块原样
+
+                    return sb.ToString();
+                });
+            }
+
+            return result;
         }
 
 
@@ -330,36 +348,42 @@ capDataTypePrefix + "(DATE|TIMESTAMP).*",
 @"	/**
 	* $1
 	*/
-	private BigDecimal $2;");
+	private BigDecimal $2;
+");
             modDefineRules.Add("Number.*",
 @"	/**
 	* $1
 	*/
-	private BigDecimal $2;");
+	private BigDecimal $2;
+");
 
             modDefineRules.Add("double.*",
 @"	/**
 	* $1
 	*/
-	private Double $2;");
+	private Double $2;
+");
 
             modDefineRules.Add("(smallInt|Integer).*",
 @"	/**
 	* $1
 	*/
-	private Integer $2;");
+	private Integer $2;
+");
 
             modDefineRules.Add("(VARCHAR|CHAR).*",
 @"	/**
 	* $1
 	*/
-	private String $2;");
+	private String $2;
+");
 
             modDefineRules.Add("(DATE|TIMESTAMP).*",
 @"	/**
 	* $1
 	*/
-	private Date $2;");
+	private Date $2;
+");
 
             _convertConfigDict.Add(ResultType.To_ModelDefine, modDefineRules);
 

@@ -1,11 +1,11 @@
 {
   "To_ModelDefine": {
-    "Decimal.*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate BigDecimal $2;",
-    "Number.*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate BigDecimal $2;",
-    "double.*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate Double $2;",
-    "(smallInt|Integer).*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate Integer $2;",
-    "(VARCHAR|CHAR).*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate String $2;",
-    "(DATE|TIMESTAMP).*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate Date $2;"
+    "Decimal.*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate BigDecimal $2;\r\n",
+    "Number.*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate BigDecimal $2;\r\n",
+    "double.*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate Double $2;\r\n",
+    "(smallInt|Integer).*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate Integer $2;\r\n",
+    "(VARCHAR|CHAR).*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate String $2;\r\n",
+    "(DATE|TIMESTAMP).*": "\t/**\r\n\t* $1\r\n\t*/\r\n\tprivate Date $2;\r\n"
   },
   "To_SQL_Select": {
     ".*": "\t$2,"
