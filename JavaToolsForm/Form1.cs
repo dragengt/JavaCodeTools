@@ -484,9 +484,7 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
         private void btn_pdmConvertTo_Click(object sender, EventArgs e)
         {
             UIUtil.TryAction(() =>
-            {
-                //测试代码：生成config的代码
-                Pdm2SqlGenerator.TestSaveConfig();
+            { 
                 JavaGetSetterGenerator.g_author = tb_author.Text;
                 
                 string convertedJavaFile = Pdm2SqlGenerator.ConvertPDMByType(cb_pdm2JavaCodeType.SelectedIndex, rtb_srcPdmDefineText.Text, cb_pdm2JavaCodeTrim_.Checked);

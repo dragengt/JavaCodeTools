@@ -238,7 +238,7 @@ namespace JavaToolsBiz.Util
             {
                 string[] splitedPart = matched.Value.Split(new string[] { "private" }, StringSplitOptions.RemoveEmptyEntries);
                 return splitedPart[0]
-                            + string.Format("\t@ApiModelProperty(value = \"{0}\")\n", matched.Groups[1].Value)
+                            + string.Format("@ApiModelProperty(value = \"{0}\")\n", matched.Groups[1].Value.Trim())
                             + "private" + splitedPart[1];
 
             }, RegexOptions.Multiline);
