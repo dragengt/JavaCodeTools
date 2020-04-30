@@ -263,6 +263,12 @@ namespace JavaToolsBiz.Util
             string importMemPath = GetImportMemPath(tarFileType, packageInfo, memType);
             dictCodeIndexs["{IMPORT_MEM_PATH}"] = importMemPath;
 
+            //TODO:方法区通过TokenSwallow的方法吞噬类原有内容，然后再进行捕获
+            //TODO:需要注意：构造方法不需要纳入捕获范围
+            //同样需要状态机：
+            //1、捕获注释
+            //2、捕获方法
+            //方法是构造方法，跳过；否则捕获完一个方法，纳入。
             //函数区：
             string funcArea = "//TODO: 方法区域";
             dictCodeIndexs["{FUNC_AREA}"] = funcArea;

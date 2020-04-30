@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace JavaToolsBiz.Util
 {
-    class TokenSwallower
+    public class TokenSwallower
     {
         enum CommentCodeState
         {
@@ -24,6 +25,51 @@ namespace JavaToolsBiz.Util
         {
             List<StringBuilder> sb1, sb2;
             return SwallowComment(input, out sb1, out sb2);
+        }
+
+        /// <summary>
+        /// 吞噬class中所有吞噬方法{}的部分，返回空的方法类
+        /// </summary>
+        /// <example>对于void A(){xxxxx}，会被吞为void A(){}</example>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string SwallowMethodBody(string input)
+        {
+            if(string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
+
+            //除了class的{导致计数=1外，再往上则不需要任何吞噬。
+            StringBuilder sb = new StringBuilder(input.Length);
+            int getSyntaxCount = 0;
+            for(int i=0;i<input.Length;i++)
+            {
+                if(input[i]=='{')
+                {
+                    //方法的第一个{，是需要的
+                    if (getSyntaxCount == 1)
+                    {
+                        sb.Append(input[i]);
+                    }
+                    getSyntaxCount++;
+                }
+                else if(input[i]=='}')
+                {
+                    getSyntaxCount--;
+                }
+
+                if(getSyntaxCount>1)
+                {
+                    //跳过{内容
+                    continue;
+                }
+                else
+                {
+                    sb.Append(input[i]);
+                }
+            }
+            return sb.ToString();
         }
 
         /// <summary>
