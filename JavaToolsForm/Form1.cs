@@ -399,7 +399,7 @@ namespace CMBChina.CustomerRating.RatingCommonService.Model.RHZXV2
             //Service->生成Mapper层
             //有mapper层或Controller勾选mapper生成->生成ResourceMapper文件
             UIUtil.TryAction(() =>
-            {
+            { 
                 //设定作者名称
                 JavaSpringBootFileCreator.g_javaAuthorName = tb_springFileAuthor.Text;
 
