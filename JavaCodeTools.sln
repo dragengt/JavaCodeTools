@@ -1,19 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iNugetTool", "..\..\C#\iNugetTool\iNugetTool.csproj", "{319C6043-1E19-4954-BB21-66532B89DB6F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCommon", "AppCommon\AppCommon.csproj", "{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaToolsForm", "JavaToolsForm\JavaToolsForm.csproj", "{472D5E1C-46CF-40D7-93AC-9DA737FF950C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaToolsBiz", "JavaToolsBiz\JavaToolsBiz.csproj", "{EF900AF9-98DA-421C-B873-0E57D2BC7209}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaToolsWeb", "JavaToolsWeb\JavaToolsWeb.csproj", "{7A9209D4-F040-4CE0-97D1-B17534155F84}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyzer", "LogAnalyzer\LogAnalyzer.csproj", "{86E9BD81-AB3F-4987-AB31-6BB27CE38AC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{319C6043-1E19-4954-BB21-66532B89DB6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{319C6043-1E19-4954-BB21-66532B89DB6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{319C6043-1E19-4954-BB21-66532B89DB6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{319C6043-1E19-4954-BB21-66532B89DB6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D983D76-FDEF-40A5-9353-CB8C3FC5903D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,16 +27,11 @@ Global
 		{EF900AF9-98DA-421C-B873-0E57D2BC7209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF900AF9-98DA-421C-B873-0E57D2BC7209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF900AF9-98DA-421C-B873-0E57D2BC7209}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A9209D4-F040-4CE0-97D1-B17534155F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A9209D4-F040-4CE0-97D1-B17534155F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A9209D4-F040-4CE0-97D1-B17534155F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A9209D4-F040-4CE0-97D1-B17534155F84}.Release|Any CPU.Build.0 = Release|Any CPU
-		{86E9BD81-AB3F-4987-AB31-6BB27CE38AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{86E9BD81-AB3F-4987-AB31-6BB27CE38AC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{86E9BD81-AB3F-4987-AB31-6BB27CE38AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{86E9BD81-AB3F-4987-AB31-6BB27CE38AC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BA2E8A1A-A357-4F81-99BC-A8A6270A8C6B}
 	EndGlobalSection
 EndGlobal
